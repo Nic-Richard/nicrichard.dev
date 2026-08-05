@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Nic Richard is a full-stack developer whose projects include TraceTray, WikiRacr, and Portlore." name="description"/>
+<meta content="Nic Richard" name="author"/>
+<meta content="#f4f3ef" id="theme-color" name="theme-color"/>
+<meta content="website" property="og:type"/>
+<meta content="Nic Richard | Full-Stack Developer" property="og:title"/>
+<meta content="Portfolio of Nic Richard, a full-stack developer building polished applications from technically ambitious ideas." property="og:description"/>
+<meta content="https://nicrichard.dev/" property="og:url"/>
+<meta content="https://nicrichard.dev/assets/images/wikiracr1.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://nicrichard.dev/" rel="canonical"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<script>
+    (function() {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      let useDark = true;
+
+      if (savedTheme === "light" || savedTheme === "dark") {
+        useDark = savedTheme === "dark";
+      } else if (window.matchMedia) {
+        useDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+
+      document.documentElement.classList.toggle("dark", useDark);
+    })();
+  </script>
+<link href="assets/css/styles.css" rel="stylesheet"/>
+<title>Nic Richard | Full-Stack Developer</title>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nic Richard",
+    "url": "https://nicrichard.dev",
+    "email": "mailto:nic@nicrichard.dev",
+    "jobTitle": "Full-Stack Developer",
+    "sameAs": [
+      "https://github.com/Nic-Richard",
+      "https://wikiracr.com",
+      "https://tracetray.com",
+      "https://portlore.com"
+    ]
+  }
+  </script>
+</head>
+<body class="portfolio-layout">
+<header class="site-header">
+<a class="site-name" href="#top">Nic Richard</a>
+<nav aria-label="Main navigation">
+<a href="#projects">Projects</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<a href="https://github.com/Nic-Richard" rel="noopener" target="_blank">GitHub</a>
+<button aria-label="Switch to dark mode" class="theme-toggle" id="theme-toggle" title="Toggle dark mode" type="button">
+<svg aria-hidden="true" fill="none" height="15" id="theme-icon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+</button>
+</nav>
+</header>
+<main id="top">
+<section class="intro">
+<div>
+<p class="eyebrow">Full-stack developer</p>
+<h1>I’m Nic Richard</h1>
+<p class="intro-copy">I’m a Computer Science graduate who likes working with complex data and turning ideas into polished, useful applications. My projects tend to start with an ambitious problem I find interesting, then grow as I work through the technical details and shape the final experience.</p>
+<div class="intro-actions">
+<a class="button primary" data-project-jump="tracetray" href="#tracetray">View projects</a>
+<a class="button secondary" href="mailto:nic@nicrichard.dev">nic@nicrichard.dev</a>
+</div>
+</div>
+<aside class="availability-card">
+<div class="availability-status"><span></span>Available for work</div>
+<h2>Open to new roles</h2>
+<p>I’m looking for a software development role where I can keep building things I'm proud of while improving my skills.</p>
+<div class="quick-links">
+<a href="https://tracetray.com" rel="noopener" target="_blank">tracetray.com <span>↗</span></a>
+<a href="https://wikiracr.com" rel="noopener" target="_blank">wikiracr.com <span>↗</span></a>
+<a href="https://portlore.com" rel="noopener" target="_blank">portlore.com <span>↗</span></a>
+</div>
+</aside>
+</section>
+<section class="project-intro" id="projects">
+<p class="eyebrow">Projects</p>
+<h2>A few things I’ve built</h2>
+<p>These are the projects I’ve spent the most time on. Each began with a problem I was genuinely curious about, and I kept building until the result was useful beyond the original experiment.</p>
+</section>
+<article class="project" id="tracetray"><div aria-label="Tracetray project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" disabled="" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>1/3</span><button aria-label="Next project" class="project-nav-button" data-project-jump="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
+<div class="project-visual trace-theme">
+<div class="project-identity">
+<h2>TraceTray</h2>
+<p>Behavioural analytics</p>
+<span class="live-status"><i></i> Live beta</span>
+</div>
+<div class="gallery-shell">
+<button aria-label="Previous TraceTray screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="tracetray" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery" id="gallery-tracetray">
+<figure><img alt="TraceTray dashboard overview showing sessions and generated findings" src="assets/images/tracetray1.png"/></figure>
+<figure><img alt="TraceTray visitor analysis view" src="assets/images/tracetray2.png"/></figure>
+<figure><img alt="TraceTray attention analysis view" src="assets/images/tracetray3.png"/></figure>
+</div>
+<button aria-label="Next TraceTray screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="tracetray" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery-dots" data-gallery-dots="tracetray"></div>
+</div>
+</div>
+<div class="project-details">
+<div class="project-copy">
+<p class="project-focus">Behavioural analytics and UX insights from a lightweight interaction tracker</p>
+<p>TraceTray came from wondering how much a website could learn from simple raw interaction data such as cursor movement, clicks, and scrolling. Instead of stopping at activity counts, it analyzes those signals together to show how visitors pay attention and move through a site.</p>
+<p>The goal is to turn a lightweight stream of activity into behavioural analytics that can help explain hesitation, engagement, and possible UX problems.</p>
+</div>
+<aside class="project-meta">
+<div><span>Built around</span><p>A lightweight tracker and analysis pipeline that turns raw interaction signals into behavioural findings and UX insight.</p></div>
+<div><span>Stack</span><p>Node.js, Express, MongoDB, Python, scikit-learn, pandas</p></div>
+<div class="project-links"><span>Links</span><a href="https://tracetray.com" rel="noopener" target="_blank">Live site ↗</a><a href="https://github.com/Nic-Richard/TraceTray" rel="noopener" target="_blank">GitHub ↗</a></div>
+</aside>
+</div>
+</article>
+<article class="project" id="wikiracr"><div aria-label="Wikiracr project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" data-project-jump="tracetray" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>2/3</span><button aria-label="Next project" class="project-nav-button" data-project-jump="portlore" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
+<div class="project-visual wiki-theme">
+<div class="project-identity">
+<h2>WikiRacr</h2>
+<p>Graph search and multiplayer game</p>
+<span class="live-status"><i></i> Live</span>
+</div>
+<div class="gallery-shell">
+<button aria-label="Previous WikiRacr screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery" id="gallery-wikiracr">
+<figure><img alt="WikiRacr home screen" src="assets/images/wikiracr1.png"/></figure>
+<figure><img alt="WikiRacr gameplay screen" src="assets/images/wikiracr2.png"/></figure>
+<figure><img alt="WikiRacr game mode selection" src="assets/images/wikiracr3.png"/></figure>
+</div>
+<button aria-label="Next WikiRacr screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery-dots" data-gallery-dots="wikiracr"></div>
+</div>
+</div>
+<div class="project-details">
+<div class="project-copy">
+<p class="project-focus">A competitive Wikipedia game built from a graph-search project</p>
+<p>WikiRacr started with researching a fast way to find the shortest path between two Wikipedia articles. I built forward and reverse graphs and used bidirectional breadth-first search across the Wikipedia link graph, which made it practical to generate and curate playable pairs at the scale of millions of articles.</p>
+<p>That work became the foundation for a full game where players navigate by clicking links only. I’m especially proud of the flow of the site and how the pair system supports solo play, daily challenges, and multiplayer modes.</p>
+</div>
+<aside class="project-meta">
+<div><span>Built around</span><p>A curated pair pipeline backed by bidirectional search over forward and reverse Wikipedia link graphs.</p></div>
+<div><span>Stack</span><p>React, Vite, Node.js, Socket.IO, SQLite, Clerk, Stripe</p></div>
+<div class="project-links"><span>Links</span><a href="https://wikiracr.com" rel="noopener" target="_blank">Play WikiRacr ↗</a><a href="https://github.com/Nic-Richard/wikiracr" rel="noopener" target="_blank">GitHub ↗</a></div>
+</aside>
+</div>
+</article>
+<article class="project" id="portlore"><div aria-label="Portlore project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" data-project-jump="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>3/3</span><button aria-label="Next project" class="project-nav-button" disabled="" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
+<div class="project-visual port-theme">
+<div class="project-identity">
+<h2>Portlore</h2>
+<p>Geographic data and travel planning</p>
+<span class="live-status"><i></i> Live, data in progress</span>
+</div>
+<div class="portlore-gallery-wrap">
+<div aria-label="Portlore screenshots" class="portlore-tabs" role="tablist">
+<button aria-selected="true" class="portlore-tab active" data-portlore-tab="mobile" role="tab" type="button">Mobile</button>
+<button aria-selected="false" class="portlore-tab" data-portlore-tab="desktop" role="tab" type="button">Desktop</button>
+</div>
+<div class="portlore-panel" data-portlore-panel="desktop" hidden="">
+<div class="gallery-shell portlore-desktop-shell">
+<button aria-label="Previous Portlore desktop screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="portlore-desktop" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery" id="gallery-portlore-desktop">
+<figure><img alt="Portlore desktop landing page" src="assets/images/portloredesktop1.png"/></figure>
+<figure><img alt="Portlore desktop map and guide view" src="assets/images/portloredesktop2.png"/></figure>
+<figure><img alt="Portlore desktop itinerary planning view" src="assets/images/portloredesktop3.png"/></figure>
+</div>
+<button aria-label="Next Portlore desktop screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="portlore-desktop" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery-dots" data-gallery-dots="portlore-desktop"></div>
+</div>
+</div>
+<div class="portlore-panel active" data-portlore-panel="mobile">
+<div class="mobile-carousel-shell" id="mobile-carousel-portlore">
+<button aria-label="Previous Portlore mobile screenshot" class="gallery-arrow previous" data-mobile-step="-1" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="mobile-carousel-viewport">
+<div class="mobile-carousel-track" id="portlore-mobile-track"></div>
+</div>
+<button aria-label="Next Portlore mobile screenshot" class="gallery-arrow next" data-mobile-step="1" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
+<div class="gallery-dots" id="dots-portlore-mobile"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="project-details">
+<div class="project-copy">
+<p class="project-focus">A cruise port guide built around finding what is actually useful near where passengers disembark</p>
+<p>Portlore started as a guide for cruise passengers visiting a city for only part of a day. Building it meant starting with ports around the world, resolving practical passenger terminals, and gathering large sets of nearby places before refining them into useful destination guides.</p>
+<p>The site presents the final selection through a visual map and itinerary interface, helping passengers decide what is worth visiting and what they can realistically fit into their time ashore.</p>
+</div>
+<aside class="project-meta">
+<div><span>Built around</span><p>A port-to-guide data pipeline that resolves where passengers arrive and filters nearby places into useful recommendations.</p></div>
+<div><span>Stack</span><p>JavaScript, Node.js, Express, OpenStreetMap, Google Places and Routes, Anthropic</p></div>
+<div class="project-links"><span>Links</span><a href="https://portlore.com" rel="noopener" target="_blank">Explore Portlore ↗</a><a href="https://github.com/Nic-Richard/portlore" rel="noopener" target="_blank">GitHub ↗</a></div>
+</aside>
+</div>
+</article>
+<section class="bottom-grid" id="about">
+<div>
+<p class="eyebrow">About</p>
+<h2>About me</h2>
+<p>I graduated from UNB Saint John in 2026 with a Computer Science degree and a Business Administration minor.</p>
+<p>I like seeing an idea become a working thing. TraceTray came from wondering what cursor and interaction data could actually tell you. WikiRacr came from researching the shortest path between Wikipedia articles, then building a game around it. Portlore came from wanting to make cruise destination planning more useful than a generic list of nearby places.</p>
+</div>
+<div id="contact">
+<p class="eyebrow">Contact</p>
+<div class="contact-list">
+<a href="mailto:nic@nicrichard.dev"><strong>Email</strong><span>nic@nicrichard.dev</span></a>
+<a href="https://github.com/Nic-Richard" rel="noopener" target="_blank"><strong>GitHub</strong><span>github.com/Nic-Richard</span></a>
+<a href="https://wikiracr.com" rel="noopener" target="_blank"><strong>WikiRacr</strong><span>wikiracr.com</span></a>
+<a href="https://tracetray.com" rel="noopener" target="_blank"><strong>TraceTray</strong><span>tracetray.com</span></a>
+<a href="https://portlore.com" rel="noopener" target="_blank"><strong>Portlore</strong><span>portlore.com</span></a>
+</div>
+</div>
+</section>
+</main>
+<footer><span>nicrichard.dev</span><span>Built by Nic Richard</span></footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
