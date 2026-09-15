@@ -66,204 +66,202 @@ document.querySelectorAll('[data-gallery-step]').forEach((button) => {
   });
 });
 
-const portloreTabs = [...document.querySelectorAll('[data-portlore-tab]')];
-const portlorePanels = [...document.querySelectorAll('[data-portlore-panel]')];
+const mobileCarousels = [];
 
-portloreTabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    const selected = tab.dataset.portloreTab;
-    portloreTabs.forEach((item) => {
-      const active = item === tab;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-selected', String(active));
-    });
-    portlorePanels.forEach((panel) => {
-      const active = panel.dataset.portlorePanel === selected;
-      panel.hidden = !active;
-      panel.classList.toggle('active', active);
-    });
-  });
-});
+function initDeviceGallery(gallery) {
+  const tabs = [...gallery.querySelectorAll('[data-device-tab]')];
+  const panels = [...gallery.querySelectorAll('[data-device-panel]')];
 
-const mobileImages = [
-  { src: 'assets/images/portloremobile2.png', alt: 'Portlore mobile landing screen' },
-  { src: 'assets/images/portloremobile1.png', alt: 'Portlore mobile itinerary screen' },
-  { src: 'assets/images/portloremobile4.png', alt: 'Portlore mobile map screen' }
-];
-
-const mobileTrack = document.getElementById('portlore-mobile-track');
-const mobileDots = document.getElementById('dots-portlore-mobile');
-const mobilePositions = ['far-prev', 'prev', 'current', 'next', 'far-next'];
-let mobileIndex = 0;
-let mobileAnimating = false;
-
-function wrappedIndex(index) {
-  return (index + mobileImages.length) % mobileImages.length;
-}
-
-function createMobileCard(position, imageIndex) {
-  const card = document.createElement('figure');
-  const resolvedIndex = wrappedIndex(imageIndex);
-  card.className = `mobile-carousel-card position-${position}`;
-  card.dataset.position = position;
-  card.dataset.imageIndex = String(resolvedIndex);
-
-  const image = document.createElement('img');
-  const data = mobileImages[resolvedIndex];
-  image.src = data.src;
-  image.alt = data.alt;
-  card.appendChild(image);
-
-  card.addEventListener('keydown', (event) => {
-    if ((event.key !== 'Enter' && event.key !== ' ') || card.dataset.position !== 'current') return;
-    event.preventDefault();
-    openLightbox('portlore-mobile', Number(card.dataset.imageIndex), card);
-  });
-
-  return card;
-}
-
-function updateMobileDots() {
-  if (!mobileDots) return;
-  [...mobileDots.children].forEach((dot, index) => {
-    dot.classList.toggle('active', index === mobileIndex);
-  });
-}
-
-function renderMobileCarousel() {
-  if (!mobileTrack) return;
-
-  mobileTrack.classList.add('resetting');
-  mobileTrack.replaceChildren(
-    createMobileCard('far-prev', mobileIndex - 2),
-    createMobileCard('prev', mobileIndex - 1),
-    createMobileCard('current', mobileIndex),
-    createMobileCard('next', mobileIndex + 1),
-    createMobileCard('far-next', mobileIndex + 2)
-  );
-  updateMobileDots();
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => mobileTrack.classList.remove('resetting'));
-  });
-}
-
-function moveMobileCards(direction) {
-  const nextPositions = direction > 0
-    ? {
-        'far-prev': 'exit-left',
-        prev: 'far-prev',
-        current: 'prev',
-        next: 'current',
-        'far-next': 'next'
-      }
-    : {
-        'far-prev': 'prev',
-        prev: 'current',
-        current: 'next',
-        next: 'far-next',
-        'far-next': 'exit-right'
-      };
-
-  [...mobileTrack.children].forEach((card) => {
-    const currentPosition = card.dataset.position;
-    const nextPosition = nextPositions[currentPosition];
-    card.className = `mobile-carousel-card position-${nextPosition}`;
-    card.dataset.position = nextPosition;
-  });
-}
-
-function stepMobileCarousel(direction) {
-  if (!mobileTrack || mobileAnimating) return;
-  mobileAnimating = true;
-
-  const transitionCard = mobileTrack.querySelector('.position-current');
-  moveMobileCards(direction);
-
-  let finished = false;
-  const finish = () => {
-    if (finished) return;
-    finished = true;
-
-    mobileIndex = wrappedIndex(mobileIndex + direction);
-    const recycledPosition = direction > 0 ? 'exit-left' : 'exit-right';
-    const recycledCard = mobileTrack.querySelector(`.position-${recycledPosition}`);
-
-    if (recycledCard) {
-      const nextPosition = direction > 0 ? 'far-next' : 'far-prev';
-      const imageIndex = direction > 0 ? mobileIndex + 2 : mobileIndex - 2;
-      const image = recycledCard.querySelector('img');
-      const data = mobileImages[wrappedIndex(imageIndex)];
-
-      mobileTrack.classList.add('resetting');
-      image.src = data.src;
-      image.alt = data.alt;
-      recycledCard.className = `mobile-carousel-card position-${nextPosition}`;
-      recycledCard.dataset.position = nextPosition;
-      recycledCard.dataset.imageIndex = String(wrappedIndex(imageIndex));
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => mobileTrack.classList.remove('resetting'));
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const selected = tab.dataset.deviceTab;
+      tabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', String(active));
       });
-    }
+      panels.forEach((panel) => {
+        const active = panel.dataset.devicePanel === selected;
+        panel.hidden = !active;
+        panel.classList.toggle('active', active);
+      });
+    });
+  });
+}
 
-    updateMobileDots();
-    mobileAnimating = false;
-  };
+document.querySelectorAll('.device-gallery').forEach(initDeviceGallery);
 
-  if (!transitionCard) {
-    finish();
-    return;
+function initMobileCarousel(shell) {
+  const images = [...shell.querySelectorAll('.mobile-carousel-source img')].map((image) => ({
+    src: image.getAttribute('src'),
+    alt: image.alt
+  }));
+  const track = shell.querySelector('.mobile-carousel-track');
+  const dots = shell.querySelector('.gallery-dots');
+  const viewport = shell.querySelector('.mobile-carousel-viewport');
+  const galleryName = shell.dataset.mobileGallery;
+  let index = 0;
+  let animating = false;
+  let pointerStartX = null;
+  let swipeFinishedAt = 0;
+
+  if (!images.length || !track || !dots || !viewport || !galleryName) return;
+
+  const wrapIndex = (value) => (value + images.length) % images.length;
+
+  function createCard(position, imageIndex) {
+    const resolvedIndex = wrapIndex(imageIndex);
+    const card = document.createElement('figure');
+    card.className = `mobile-carousel-card position-${position}`;
+    card.dataset.position = position;
+    card.dataset.imageIndex = String(resolvedIndex);
+
+    const image = document.createElement('img');
+    image.src = images[resolvedIndex].src;
+    image.alt = images[resolvedIndex].alt;
+    card.appendChild(image);
+    return card;
   }
 
-  transitionCard.addEventListener('transitionend', finish, { once: true });
-  window.setTimeout(finish, 700);
-}
+  function syncAccessibility() {
+    track.querySelectorAll('.mobile-carousel-card').forEach((card) => {
+      const current = card.dataset.position === 'current';
+      card.tabIndex = current ? 0 : -1;
+      card.setAttribute('role', current ? 'button' : 'presentation');
+      if (current) card.setAttribute('aria-label', `Open ${galleryName.replace('-mobile', '')} mobile screenshots fullscreen`);
+      else card.removeAttribute('aria-label');
+    });
+  }
 
-if (mobileDots) {
-  mobileImages.forEach((_, index) => {
+  function updateDots() {
+    [...dots.children].forEach((dot, dotIndex) => {
+      dot.classList.toggle('active', dotIndex === index);
+    });
+  }
+
+  function render() {
+    track.classList.add('resetting');
+    track.replaceChildren(
+      createCard('far-prev', index - 2),
+      createCard('prev', index - 1),
+      createCard('current', index),
+      createCard('next', index + 1),
+      createCard('far-next', index + 2)
+    );
+    updateDots();
+    syncAccessibility();
+    requestAnimationFrame(() => requestAnimationFrame(() => track.classList.remove('resetting')));
+  }
+
+  function moveCards(direction) {
+    const nextPositions = direction > 0
+      ? { 'far-prev': 'exit-left', prev: 'far-prev', current: 'prev', next: 'current', 'far-next': 'next' }
+      : { 'far-prev': 'prev', prev: 'current', current: 'next', next: 'far-next', 'far-next': 'exit-right' };
+
+    [...track.children].forEach((card) => {
+      const nextPosition = nextPositions[card.dataset.position];
+      card.className = `mobile-carousel-card position-${nextPosition}`;
+      card.dataset.position = nextPosition;
+    });
+  }
+
+  function step(direction) {
+    if (animating) return;
+    animating = true;
+    const transitionCard = track.querySelector('.position-current');
+    moveCards(direction);
+
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      index = wrapIndex(index + direction);
+
+      const recycledPosition = direction > 0 ? 'exit-left' : 'exit-right';
+      const recycledCard = track.querySelector(`.position-${recycledPosition}`);
+      if (recycledCard) {
+        const nextPosition = direction > 0 ? 'far-next' : 'far-prev';
+        const imageIndex = direction > 0 ? index + 2 : index - 2;
+        const resolvedIndex = wrapIndex(imageIndex);
+        const image = recycledCard.querySelector('img');
+
+        track.classList.add('resetting');
+        image.src = images[resolvedIndex].src;
+        image.alt = images[resolvedIndex].alt;
+        recycledCard.className = `mobile-carousel-card position-${nextPosition}`;
+        recycledCard.dataset.position = nextPosition;
+        recycledCard.dataset.imageIndex = String(resolvedIndex);
+        requestAnimationFrame(() => requestAnimationFrame(() => track.classList.remove('resetting')));
+      }
+
+      updateDots();
+      syncAccessibility();
+      animating = false;
+    };
+
+    if (!transitionCard) {
+      finish();
+      return;
+    }
+
+    transitionCard.addEventListener('transitionend', finish, { once: true });
+    window.setTimeout(finish, 800);
+  }
+
+  images.forEach((_, dotIndex) => {
     const dot = document.createElement('button');
     dot.type = 'button';
-    dot.setAttribute('aria-label', `Show mobile screenshot ${index + 1}`);
+    dot.setAttribute('aria-label', `Show mobile screenshot ${dotIndex + 1}`);
     dot.addEventListener('click', () => {
-      if (index === mobileIndex || mobileAnimating) return;
-      const forwardDistance = wrappedIndex(index - mobileIndex);
-      stepMobileCarousel(forwardDistance === 1 ? 1 : -1);
+      if (dotIndex === index || animating) return;
+      const forwardDistance = wrapIndex(dotIndex - index);
+      step(forwardDistance <= images.length / 2 ? 1 : -1);
     });
-    mobileDots.appendChild(dot);
+    dots.appendChild(dot);
   });
-}
 
-document.querySelectorAll('[data-mobile-step]').forEach((button) => {
-  button.addEventListener('click', () => stepMobileCarousel(Number(button.dataset.mobileStep)));
-});
+  shell.querySelectorAll('[data-mobile-step]').forEach((button) => {
+    button.addEventListener('click', () => step(Number(button.dataset.mobileStep)));
+  });
 
-const mobileViewport = document.querySelector('.mobile-carousel-viewport');
-let pointerStartX = null;
-let mobileSwipeFinishedAt = 0;
-
-if (mobileViewport) {
-  mobileViewport.addEventListener('pointerdown', (event) => {
+  viewport.addEventListener('pointerdown', (event) => {
     pointerStartX = event.clientX;
-    mobileViewport.setPointerCapture(event.pointerId);
+    viewport.setPointerCapture(event.pointerId);
   });
 
-  mobileViewport.addEventListener('pointerup', (event) => {
+  viewport.addEventListener('pointerup', (event) => {
     if (pointerStartX === null) return;
     const distance = event.clientX - pointerStartX;
     pointerStartX = null;
     if (Math.abs(distance) > 38) {
-      mobileSwipeFinishedAt = Date.now();
-      stepMobileCarousel(distance < 0 ? 1 : -1);
+      swipeFinishedAt = Date.now();
+      step(distance < 0 ? 1 : -1);
     }
   });
 
-  mobileViewport.addEventListener('pointercancel', () => {
+  viewport.addEventListener('pointercancel', () => {
     pointerStartX = null;
   });
+
+  viewport.addEventListener('click', () => {
+    if (Date.now() - swipeFinishedAt < 350 || animating) return;
+    const currentCard = track.querySelector('.mobile-carousel-card[data-position="current"]');
+    if (!currentCard) return;
+    openLightbox(galleryName, Number(currentCard.dataset.imageIndex), currentCard);
+  });
+
+  track.addEventListener('keydown', (event) => {
+    const card = event.target.closest('.mobile-carousel-card[data-position="current"]');
+    if (!card || (event.key !== 'Enter' && event.key !== ' ')) return;
+    event.preventDefault();
+    openLightbox(galleryName, Number(card.dataset.imageIndex), card);
+  });
+
+  render();
+  mobileCarousels.push({ galleryName, images });
 }
 
-renderMobileCarousel();
+document.querySelectorAll('[data-mobile-gallery]').forEach(initMobileCarousel);
 
 window.addEventListener('load', () => {
   document.querySelectorAll('.gallery').forEach(updateGalleryFade);
@@ -365,13 +363,19 @@ document.querySelectorAll('[data-project-jump]').forEach((control) => {
   });
 });
 
+const lightboxGalleries = {};
 
-const lightboxGalleries = {
-  tracetray: [...document.querySelectorAll('#gallery-tracetray img')].map((image) => ({ src: image.src, alt: image.alt })),
-  wikiracr: [...document.querySelectorAll('#gallery-wikiracr img')].map((image) => ({ src: image.src, alt: image.alt })),
-  'portlore-desktop': [...document.querySelectorAll('#gallery-portlore-desktop img')].map((image) => ({ src: image.src, alt: image.alt })),
-  'portlore-mobile': mobileImages.map((image) => ({ src: new URL(image.src, window.location.href).href, alt: image.alt }))
-};
+document.querySelectorAll('.gallery[id]').forEach((gallery) => {
+  const name = gallery.id.replace('gallery-', '');
+  lightboxGalleries[name] = [...gallery.querySelectorAll('img')].map((image) => ({ src: image.src, alt: image.alt }));
+});
+
+mobileCarousels.forEach(({ galleryName, images }) => {
+  lightboxGalleries[galleryName] = images.map((image) => ({
+    src: new URL(image.src, window.location.href).href,
+    alt: image.alt
+  }));
+});
 
 const lightbox = document.createElement('div');
 lightbox.className = 'gallery-lightbox';
@@ -451,31 +455,6 @@ document.querySelectorAll('.gallery').forEach((gallery) => {
     });
   });
 });
-
-if (mobileViewport) {
-  mobileViewport.addEventListener('click', () => {
-    if (Date.now() - mobileSwipeFinishedAt < 350 || mobileAnimating) return;
-    const currentCard = mobileTrack?.querySelector('.mobile-carousel-card[data-position="current"]');
-    if (!currentCard) return;
-    openLightbox('portlore-mobile', Number(currentCard.dataset.imageIndex), currentCard);
-  });
-}
-
-if (mobileTrack) {
-  const makeCurrentCardFocusable = () => {
-    mobileTrack.querySelectorAll('.mobile-carousel-card').forEach((card) => {
-      const current = card.dataset.position === 'current';
-      card.tabIndex = current ? 0 : -1;
-      card.setAttribute('role', current ? 'button' : 'presentation');
-      if (current) card.setAttribute('aria-label', 'Open Portlore mobile screenshots fullscreen');
-      else card.removeAttribute('aria-label');
-    });
-  };
-
-  const mobileCardObserver = new MutationObserver(makeCurrentCardFocusable);
-  mobileCardObserver.observe(mobileTrack, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'data-position'] });
-  makeCurrentCardFocusable();
-}
 
 lightboxClose.addEventListener('click', closeLightbox);
 lightbox.querySelector('.gallery-lightbox-arrow.previous').addEventListener('click', () => stepLightbox(-1));
