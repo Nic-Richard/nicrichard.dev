@@ -1762,3 +1762,35 @@ body.lightbox-open {
   .portfolio-layout .mobile-carousel-card.position-prev { left: 23%; }
   .portfolio-layout .mobile-carousel-card.position-next { left: 77%; }
 }
+
+:root {
+  --surface: #ffffff;
+  --surface-2: #ecebe6;
+  --muted-2: #a8a6a0;
+}
+
+.dark {
+  --surface: #1a1a1f;
+  --surface-2: #26262c;
+  --muted-2: #6c6c76;
+}
+
+.seed-theme {
+  background: #1a221d;
+}
+
+@media (min-width: 791px) {
+  .portfolio-layout #seed-placement {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+}
+
+.portfolio-layout #seed-placement .gallery-shell .gallery {
+  aspect-ratio: 3 / 2;
+}
+
+@media (max-width: 520px) {
+  .portfolio-layout #seed-placement .project-visual {
+    grid-template-rows: auto auto;
+  }
+}

@@ -2,7 +2,7 @@
 
 Source for my personal portfolio at [nicrichard.dev](https://nicrichard.dev).
 
-The site is built with HTML, CSS, and JavaScript. It showcases miscellary, WikiRacr, TraceTray, and Portlore.
+The site is built with HTML, CSS, and JavaScript. It showcases Miscellary, WikiRacr, TraceTray, Portlore, and Seed Placement Randomizer.
 
 ## Local preview
 
