@@ -353,6 +353,10 @@
   .mobile-carousel-shell .gallery-arrow { top: 145px; }
 }
 
+.portfolio-layout .intro {
+  padding-block: 68px 52px;
+}
+
 .portfolio-layout .project {
   align-items: center;
   display: grid;
@@ -588,6 +592,10 @@
 }
 
 @media (max-width: 790px) {
+  .portfolio-layout .intro {
+    padding-block: 44px 32px;
+  }
+
   .portfolio-layout .project {
     display: flex;
     flex-direction: column;
@@ -596,8 +604,15 @@
 
   .portfolio-layout .project .project-visual,
   .portfolio-layout .project .project-details {
-    order: initial;
     width: 100%;
+  }
+
+  .portfolio-layout .project:is(#miscellary, #portlore, #seed-placement, #tracetray, #wikiracr) .project-visual {
+    order: 1;
+  }
+
+  .portfolio-layout .project:is(#miscellary, #portlore, #seed-placement, #tracetray, #wikiracr) .project-details {
+    order: 2;
   }
 
   .portfolio-layout .project-visual {
@@ -1822,6 +1837,35 @@ body.lightbox-open {
 
 .portfolio-layout #seed-placement .gallery-shell .gallery {
   aspect-ratio: 3 / 2;
+}
+
+#seed-placement .mobile-carousel-card:not(.position-current) {
+  display: none;
+}
+
+#seed-placement .mobile-carousel-card.position-current {
+  aspect-ratio: 412 / 915;
+  box-sizing: content-box;
+  height: auto;
+}
+
+#seed-placement .mobile-carousel-shell {
+  margin-top: 0;
+}
+
+.portfolio-layout #seed-placement .portlore-tabs {
+  order: 2;
+  padding-bottom: 4px;
+  position: relative;
+  z-index: 12;
+}
+
+.portfolio-layout #seed-placement .portlore-panel[data-device-panel="mobile"] {
+  margin-top: 0;
+}
+
+#seed-placement .gallery-dots[hidden] {
+  display: none;
 }
 
 @media (max-width: 520px) {

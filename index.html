@@ -38,7 +38,7 @@
       document.documentElement.classList.toggle("dark", useDark);
     })();
   </script>
-<link href="assets/css/styles.css?v=54a2611f63e6" rel="stylesheet"/>
+<link href="assets/css/styles.css?v=38cdcab422e4" rel="stylesheet"/>
 <title>Nic Richard | Full-Stack Developer</title>
 <script type="application/ld+json">
   {
@@ -141,6 +141,7 @@
 <div class="mobile-carousel-source" hidden>
 <img alt="Miscellary Android Browse screen with featured cards and published sets" src="assets/images/miscellary/mobile/october-2026/01-browse.png"/>
 <img alt="Miscellary Android Consoles set with its Game Boy pack artwork and collection tabs" src="assets/images/miscellary/mobile/october-2026/02-set.png"/>
+<img alt="Miscellary Android Packs page filtered to Garden Birds, with a free pack and recent cards" src="assets/images/miscellary/mobile/october-2026/09-packs.png"/>
 <img alt="Miscellary Android Film Cameras binder in the full-screen landscape viewer" data-orientation="landscape" src="assets/images/miscellary/mobile/october-2026/03-binder.png"/>
 <img alt="Miscellary Android Hasselblad 500C card inspector with front and back controls" src="assets/images/miscellary/mobile/october-2026/04-inspector.png"/>
 <img alt="Miscellary Android Consoles pack ready to tear open" src="assets/images/miscellary/mobile/october-2026/08-pack.png"/>
@@ -226,10 +227,16 @@
 <div class="project-visual seed-theme">
 <div class="project-identity">
 <h2>Seed Placement Randomizer</h2>
-<p>Commissioned desktop app</p>
-<span class="live-status"><i></i> Released, v1.1.1</span>
+<p>Commissioned desktop and Android app</p>
+<span class="live-status"><i></i> Released, v1.2.0</span>
 </div>
-<div class="gallery-shell">
+<div class="portlore-gallery-wrap device-gallery">
+<div aria-label="Seed Placement Randomizer screenshots" class="portlore-tabs" role="tablist">
+<button aria-selected="true" class="portlore-tab active" data-device-tab="desktop" role="tab" type="button">Desktop</button>
+<button aria-selected="false" class="portlore-tab" data-device-tab="mobile" role="tab" type="button">Mobile</button>
+</div>
+<div class="portlore-panel active" data-device-panel="desktop">
+<div class="gallery-shell portlore-desktop-shell">
 <button aria-label="Previous Seed Placement Randomizer screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="seed-placement" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
 <div class="gallery" id="gallery-seed-placement">
 <figure><img alt="Seed Placement Randomizer with seven randomized dishes on the rack" src="assets/images/seed-placement/desktop-01-rack.png"/></figure>
@@ -239,15 +246,27 @@
 <div class="gallery-dots" data-gallery-dots="seed-placement"></div>
 </div>
 </div>
+<div class="portlore-panel" data-device-panel="mobile" hidden="">
+<div class="mobile-carousel-shell" data-mobile-gallery="seed-placement-mobile">
+<div class="mobile-carousel-viewport"><div class="mobile-carousel-track"></div></div>
+<div class="gallery-dots" hidden></div>
+<div class="mobile-carousel-source" hidden>
+<img alt="Seed Placement Randomizer phone layout with seven dishes on the rack and seed placement controls" src="assets/images/seed-placement/mobile-01-rack.png"/>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="project-details">
 <div class="project-copy">
-<p class="project-focus">A cross-platform desktop app that takes human bias out of seed bioassays</p>
+<p class="project-focus">A desktop and Android app that takes human bias out of seed bioassays</p>
 <p>A researcher running seed germination experiments asked me for a way to place seeds in each petri dish, and each dish on the rack, without unconsciously favouring some positions. This was my first commission, and I took it from first conversation to a released app in about a day.</p>
 <p>The app samples every valid layout with equal probability and switches to a Markov chain when the dish gets crowded. Each dish gets a short layout code that reproduces it exactly on any machine, and a test suite checks spacing, uniformity, and reproducibility. Around that is an interface built to read clearly on a projector, with exports for seed coordinates, the rack, and printable 1:1 templates.</p>
+<p>The client returned for an Android version, delivered in v1.2.0 using the same C# and Avalonia code. Run files move the complete rack between desktop and phone, so an experiment set up on a computer can go straight to the bench.</p>
 </div>
 <aside class="project-meta">
 <div><span>Built around</span><p>Unbiased, reproducible placement with statistical tests behind it, in an app a researcher can use and present without instruction.</p></div>
-<div><span>Stack</span><p>C#, .NET 10, Avalonia, xUnit, GitHub Actions for Windows, macOS, and Linux builds</p></div>
+<div><span>Stack</span><p>C#, .NET 10, Avalonia, xUnit, GitHub Actions for Windows, macOS, Linux, and signed Android builds</p></div>
 <div class="project-links"><span>Links</span><a href="https://github.com/Nic-Richard/seed-placement-randomizer/releases/latest" rel="noopener" target="_blank">Download ↗</a><a href="https://github.com/Nic-Richard/seed-placement-randomizer" rel="noopener" target="_blank">GitHub ↗</a></div>
 </aside>
 </div>
@@ -350,6 +369,6 @@
   window.TraceTray = { endpoint: "https://tracetray.com/collect", key: "tt_t7KCnd84TPLFanoE" };
 </script>
 <script src="https://tracetray.com/client/tracker.js" defer></script>
-<script src="assets/js/main.js?v=d14ae55bc3f1"></script>
+<script src="assets/js/main.js?v=2b5ee5df681d"></script>
 </body>
 </html>

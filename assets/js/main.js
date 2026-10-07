@@ -337,7 +337,6 @@ if (systemTheme) {
 }
 
 const revealTargets = [
-  ...document.querySelectorAll('.project-intro > *'),
   ...document.querySelectorAll('.project .project-visual, .project .project-details'),
   ...document.querySelectorAll('.bottom-grid > div')
 ];
