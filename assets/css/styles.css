@@ -1349,10 +1349,6 @@ footer {
 }
 
 @media (max-width: 520px) {
-  .portfolio-layout #portlore .project-visual {
-    grid-template-rows: 104px auto;
-  }
-
   .portfolio-layout .mobile-carousel-card.position-current,
   .portfolio-layout .mobile-carousel-track.shift-next .position-next,
   .portfolio-layout .mobile-carousel-track.shift-previous .position-prev {
@@ -1380,7 +1376,6 @@ footer {
 }
 
 .portfolio-layout #portlore .project-visual {
-  grid-template-rows: 104px auto;
   overflow: visible;
 }
 
@@ -2010,7 +2005,7 @@ body.lightbox-open {
 }
 
 .portfolio-layout .device-project .project-visual {
-  grid-template-rows: 104px auto;
+  grid-template-rows: 132px auto;
   overflow: visible;
 }
 
@@ -2061,6 +2056,10 @@ body.lightbox-open {
 @media (max-width: 520px) {
   .portfolio-layout .device-project .portlore-panel[data-device-panel="mobile"] {
     margin-top: -42px;
+  }
+
+  .portfolio-layout .device-project .project-visual {
+    grid-template-rows: 118px auto;
   }
 
   .portfolio-layout .mobile-carousel-card.position-prev {
