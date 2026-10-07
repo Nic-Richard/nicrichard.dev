@@ -1,3 +1,6 @@
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const scrollBehavior = () => reducedMotion.matches ? 'instant' : 'smooth';
+
 function getGalleryIndex(gallery) {
   return Math.round(gallery.scrollLeft / gallery.clientWidth);
 }
@@ -33,7 +36,7 @@ document.querySelectorAll('.gallery').forEach((gallery) => {
       dot.setAttribute('aria-label', `Show screenshot ${index + 1}`);
       dot.classList.toggle('active', index === 0);
       dot.addEventListener('click', () => {
-        gallery.scrollTo({ left: gallery.clientWidth * index, behavior: 'smooth' });
+        gallery.scrollTo({ left: gallery.clientWidth * index, behavior: scrollBehavior() });
       });
       dots.appendChild(dot);
     });
@@ -62,7 +65,7 @@ document.querySelectorAll('[data-gallery-step]').forEach((button) => {
     const count = gallery.querySelectorAll('figure').length;
     const current = getGalleryIndex(gallery);
     const next = (current + direction + count) % count;
-    gallery.scrollTo({ left: gallery.clientWidth * next, behavior: 'smooth' });
+    gallery.scrollTo({ left: gallery.clientWidth * next, behavior: scrollBehavior() });
   });
 });
 
@@ -72,19 +75,41 @@ function initDeviceGallery(gallery) {
   const tabs = [...gallery.querySelectorAll('[data-device-tab]')];
   const panels = [...gallery.querySelectorAll('[data-device-panel]')];
 
-  tabs.forEach((tab) => {
+  tabs.forEach((tab, index) => {
+    const panel = panels.find(item => item.dataset.devicePanel === tab.dataset.deviceTab);
+    const name = gallery.closest('.project').id;
+    tab.id = `${name}-${tab.dataset.deviceTab}-tab`;
+    tab.tabIndex = tab.getAttribute('aria-selected') === 'true' ? 0 : -1;
+    if (panel) {
+      panel.id = `${name}-${tab.dataset.deviceTab}-panel`;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+      tab.setAttribute('aria-controls', panel.id);
+    }
     tab.addEventListener('click', () => {
       const selected = tab.dataset.deviceTab;
       tabs.forEach((item) => {
         const active = item === tab;
         item.classList.toggle('active', active);
         item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
       });
       panels.forEach((panel) => {
         const active = panel.dataset.devicePanel === selected;
         panel.hidden = !active;
         panel.classList.toggle('active', active);
       });
+    });
+    tab.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      tabs[next].click();
+      tabs[next].focus();
     });
   });
 }
@@ -94,7 +119,8 @@ document.querySelectorAll('.device-gallery').forEach(initDeviceGallery);
 function initMobileCarousel(shell) {
   const images = [...shell.querySelectorAll('.mobile-carousel-source img')].map((image) => ({
     src: image.getAttribute('src'),
-    alt: image.alt
+    alt: image.alt,
+    landscape: image.dataset.orientation === 'landscape'
   }));
   const track = shell.querySelector('.mobile-carousel-track');
   const dots = shell.querySelector('.gallery-dots');
@@ -113,6 +139,7 @@ function initMobileCarousel(shell) {
     const resolvedIndex = wrapIndex(imageIndex);
     const card = document.createElement('figure');
     card.className = `mobile-carousel-card position-${position}`;
+    card.classList.toggle('landscape', images[resolvedIndex].landscape);
     card.dataset.position = position;
     card.dataset.imageIndex = String(resolvedIndex);
 
@@ -128,6 +155,7 @@ function initMobileCarousel(shell) {
       const current = card.dataset.position === 'current';
       card.tabIndex = current ? 0 : -1;
       card.setAttribute('role', current ? 'button' : 'presentation');
+      card.setAttribute('aria-hidden', String(!current));
       if (current) card.setAttribute('aria-label', `Open ${galleryName.replace('-mobile', '')} mobile screenshots fullscreen`);
       else card.removeAttribute('aria-label');
     });
@@ -136,6 +164,7 @@ function initMobileCarousel(shell) {
   function updateDots() {
     [...dots.children].forEach((dot, dotIndex) => {
       dot.classList.toggle('active', dotIndex === index);
+      dot.setAttribute('aria-pressed', String(dotIndex === index));
     });
   }
 
@@ -161,12 +190,18 @@ function initMobileCarousel(shell) {
     [...track.children].forEach((card) => {
       const nextPosition = nextPositions[card.dataset.position];
       card.className = `mobile-carousel-card position-${nextPosition}`;
+      card.classList.toggle('landscape', images[Number(card.dataset.imageIndex)].landscape);
       card.dataset.position = nextPosition;
     });
   }
 
   function step(direction) {
     if (animating) return;
+    if (reducedMotion.matches) {
+      index = wrapIndex(index + direction);
+      render();
+      return;
+    }
     animating = true;
     const transitionCard = track.querySelector('.position-current');
     moveCards(direction);
@@ -189,6 +224,7 @@ function initMobileCarousel(shell) {
         image.src = images[resolvedIndex].src;
         image.alt = images[resolvedIndex].alt;
         recycledCard.className = `mobile-carousel-card position-${nextPosition}`;
+        recycledCard.classList.toggle('landscape', images[resolvedIndex].landscape);
         recycledCard.dataset.position = nextPosition;
         recycledCard.dataset.imageIndex = String(resolvedIndex);
         requestAnimationFrame(() => requestAnimationFrame(() => track.classList.remove('resetting')));
@@ -214,8 +250,8 @@ function initMobileCarousel(shell) {
     dot.setAttribute('aria-label', `Show mobile screenshot ${dotIndex + 1}`);
     dot.addEventListener('click', () => {
       if (dotIndex === index || animating) return;
-      const forwardDistance = wrapIndex(dotIndex - index);
-      step(forwardDistance <= images.length / 2 ? 1 : -1);
+      index = dotIndex;
+      render();
     });
     dots.appendChild(dot);
   });
@@ -353,7 +389,7 @@ function scrollToProject(projectId) {
   const header = document.querySelector('.site-header');
   const headerHeight = header ? header.getBoundingClientRect().height : 0;
   const top = window.scrollY + target.getBoundingClientRect().top - headerHeight;
-  window.scrollTo({ top, behavior: 'smooth' });
+  window.scrollTo({ top, behavior: scrollBehavior() });
 }
 
 document.querySelectorAll('[data-project-jump]').forEach((control) => {
@@ -382,6 +418,7 @@ lightbox.className = 'gallery-lightbox';
 lightbox.setAttribute('role', 'dialog');
 lightbox.setAttribute('aria-modal', 'true');
 lightbox.setAttribute('aria-label', 'Project screenshots');
+lightbox.hidden = true;
 lightbox.innerHTML = `
   <button class="gallery-lightbox-close" type="button" aria-label="Close fullscreen gallery"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5L19 19M19 5L5 19"/></svg></button>
   <button class="gallery-lightbox-arrow previous" type="button" aria-label="Previous screenshot">
@@ -401,6 +438,7 @@ const lightboxClose = lightbox.querySelector('.gallery-lightbox-close');
 let lightboxGallery = null;
 let lightboxIndex = 0;
 let lightboxReturnFocus = null;
+const lightboxInertElements = [];
 
 function updateLightbox() {
   const images = lightboxGalleries[lightboxGallery] || [];
@@ -418,6 +456,12 @@ function openLightbox(galleryName, index, trigger) {
   lightboxIndex = (index + images.length) % images.length;
   lightboxReturnFocus = trigger || document.activeElement;
   updateLightbox();
+  lightbox.hidden = false;
+  [...document.body.children].filter(element => element !== lightbox && !element.inert)
+    .forEach(element => {
+      element.inert = true;
+      lightboxInertElements.push(element);
+    });
   document.body.classList.add('lightbox-open');
   lightbox.classList.add('open');
   lightboxClose.focus();
@@ -428,6 +472,9 @@ function closeLightbox() {
   lightbox.classList.remove('open');
   document.body.classList.remove('lightbox-open');
   lightboxImage.removeAttribute('src');
+  lightbox.hidden = true;
+  lightboxInertElements.forEach(element => { element.inert = false; });
+  lightboxInertElements.length = 0;
   if (lightboxReturnFocus && typeof lightboxReturnFocus.focus === 'function') {
     lightboxReturnFocus.focus();
   }
@@ -465,6 +512,18 @@ lightbox.addEventListener('click', (event) => {
 
 document.addEventListener('keydown', (event) => {
   if (!lightbox.classList.contains('open')) return;
+  if (event.key === 'Tab') {
+    const controls = [...lightbox.querySelectorAll('button')];
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
   if (event.key === 'Escape') closeLightbox();
   if (event.key === 'ArrowLeft') stepLightbox(-1);
   if (event.key === 'ArrowRight') stepLightbox(1);

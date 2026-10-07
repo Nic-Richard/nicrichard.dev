@@ -1538,6 +1538,35 @@
   pointer-events: auto;
 }
 
+.gallery-lightbox[hidden] { display: none; }
+
+#miscellary .mobile-carousel-card:not(.landscape) {
+  aspect-ratio: 9 / 20;
+  box-sizing: content-box;
+  height: auto;
+}
+
+.portfolio-layout .mobile-carousel-card.landscape {
+  aspect-ratio: 20 / 9;
+  border-radius: 14px;
+  height: auto;
+  bottom: auto;
+  overflow: hidden;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(.78);
+  width: min(80%, 560px);
+}
+
+.portfolio-layout .mobile-carousel-card.landscape.position-current {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.portfolio-layout .mobile-carousel-card.landscape img {
+  border-radius: 10px;
+  height: auto;
+  object-fit: contain;
+}
+
 .gallery-lightbox-image {
   border-radius: 12px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, .42);
@@ -1631,7 +1660,8 @@ body.lightbox-open {
 
 @media (prefers-reduced-motion: reduce) {
   .gallery-lightbox,
-  .gallery-lightbox-image {
+  .gallery-lightbox-image,
+  .mobile-carousel-card {
     transition: none;
   }
 }
@@ -1798,4 +1828,8 @@ body.lightbox-open {
   .portfolio-layout #seed-placement .project-visual {
     grid-template-rows: auto auto;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-layout .mobile-carousel-card { transition: none; }
 }
