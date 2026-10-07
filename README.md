@@ -14,6 +14,36 @@ python3 -m http.server 8080
 
 Then open `http://localhost:8080`.
 
+## Checks
+
+```bash
+node scripts/check.mjs
+bash -n deploy/deploy.sh
+```
+
+Requires Node.js and Git, with no npm dependencies. Checks JavaScript (including inline
+scripts), structured data, and static HTML/CSS references to local files. Generated image
+paths in the export template still need a headless export check. GitHub Actions runs the
+same checks on pushes and pull requests. Use two-space indentation and LF line endings.
+
+## Deployment
+
+Copy `.env.deploy.example` to `.env.deploy` and set the SSH target, then run:
+
+```bash
+bash deploy/deploy.sh
+```
+
+Requires a clean working tree, Node.js, Git, Bash and SSH. Only committed site files are
+uploaded; local environment files are never included. The server must already have nginx,
+the site's configuration and `/var/www/nicrichard.dev/current` pointing to a release.
+`deploy/nginx.conf` and `deploy/nginx.http.conf` are setup templates, not overwritten on deploy.
+
+The script prevents overlapping release switches with `flock`, checks nginx before switching
+releases atomically, then reloads it and checks the site. A reload or health-check failure
+restores the previous release. After a successful health check, older release directories
+are removed, keeping only the active release and its immediate predecessor for rollback.
+
 ## Landscape mobile exports
 
 Generate the Miscellary screenshot sets for pages that only accept landscape images:

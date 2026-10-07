@@ -1,374 +1,1487 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Nic Richard is a full-stack developer whose projects include Miscellary, TraceTray, WikiRacr, Portlore, and Seed Placement Randomizer." name="description"/>
-<meta content="Nic Richard" name="author"/>
-<meta content="#f4f3ef" id="theme-color" name="theme-color"/>
-<meta content="website" property="og:type"/>
-<meta content="Nic Richard | Full-Stack Developer" property="og:title"/>
-<meta content="Portfolio of Nic Richard, a full-stack developer building web, mobile, and desktop applications." property="og:description"/>
-<meta content="https://nicrichard.dev/" property="og:url"/>
-<meta content="Nic Richard" property="og:site_name"/>
-<meta content="en_CA" property="og:locale"/>
-<meta content="https://nicrichard.dev/assets/images/og-image.png" property="og:image"/>
-<meta content="1200" property="og:image:width"/>
-<meta content="630" property="og:image:height"/>
-<meta content="Nic Richard, full-stack developer, beside his five projects" property="og:image:alt"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Nic Richard | Full-Stack Developer" name="twitter:title"/>
-<meta content="Portfolio of Nic Richard, a full-stack developer building web, mobile, and desktop applications." name="twitter:description"/>
-<meta content="https://nicrichard.dev/assets/images/og-image.png" name="twitter:image"/>
-<meta content="Nic Richard, full-stack developer, beside his five projects" name="twitter:image:alt"/>
-<link href="https://nicrichard.dev/" rel="canonical"/>
-<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
-<script>
-    (function() {
-      const savedTheme = localStorage.getItem("portfolio-theme");
-      let useDark = true;
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      content="Nic Richard is a full-stack developer whose projects include Miscellary, TraceTray, WikiRacr, Portlore, and Seed Placement Randomizer."
+      name="description"
+    />
+    <meta content="Nic Richard" name="author" />
+    <meta content="#f4f3ef" id="theme-color" name="theme-color" />
+    <meta content="website" property="og:type" />
+    <meta content="Nic Richard | Full-Stack Developer" property="og:title" />
+    <meta
+      content="Portfolio of Nic Richard, a full-stack developer building web, mobile, and desktop applications."
+      property="og:description"
+    />
+    <meta content="https://nicrichard.dev/" property="og:url" />
+    <meta content="Nic Richard" property="og:site_name" />
+    <meta content="en_CA" property="og:locale" />
+    <meta
+      content="https://nicrichard.dev/assets/images/og-image.png"
+      property="og:image"
+    />
+    <meta content="1200" property="og:image:width" />
+    <meta content="630" property="og:image:height" />
+    <meta
+      content="Nic Richard, full-stack developer, beside his five projects"
+      property="og:image:alt"
+    />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="Nic Richard | Full-Stack Developer" name="twitter:title" />
+    <meta
+      content="Portfolio of Nic Richard, a full-stack developer building web, mobile, and desktop applications."
+      name="twitter:description"
+    />
+    <meta
+      content="https://nicrichard.dev/assets/images/og-image.png"
+      name="twitter:image"
+    />
+    <meta
+      content="Nic Richard, full-stack developer, beside his five projects"
+      name="twitter:image:alt"
+    />
+    <link href="https://nicrichard.dev/" rel="canonical" />
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        let useDark = true;
 
-      if (savedTheme === "light" || savedTheme === "dark") {
-        useDark = savedTheme === "dark";
-      } else if (window.matchMedia) {
-        useDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (savedTheme === "light" || savedTheme === "dark") {
+          useDark = savedTheme === "dark";
+        } else if (window.matchMedia) {
+          useDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+
+        document.documentElement.classList.toggle("dark", useDark);
+      })();
+    </script>
+    <link href="assets/css/styles.css?v=f88d2a933a72" rel="stylesheet" />
+    <title>Nic Richard | Full-Stack Developer</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nic Richard",
+        "url": "https://nicrichard.dev",
+        "email": "mailto:nic@nicrichard.dev",
+        "jobTitle": "Full-Stack Developer",
+        "sameAs": [
+          "https://github.com/Nic-Richard",
+          "https://www.linkedin.com/in/nic-richard/",
+          "https://miscellary.com",
+          "https://wikiracr.com",
+          "https://tracetray.com",
+          "https://portlore.com"
+        ]
       }
-
-      document.documentElement.classList.toggle("dark", useDark);
-    })();
-  </script>
-<link href="assets/css/styles.css?v=51b36dfe26d6" rel="stylesheet"/>
-<title>Nic Richard | Full-Stack Developer</title>
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Nic Richard",
-    "url": "https://nicrichard.dev",
-    "email": "mailto:nic@nicrichard.dev",
-    "jobTitle": "Full-Stack Developer",
-    "sameAs": [
-      "https://github.com/Nic-Richard",
-      "https://www.linkedin.com/in/nic-richard/",
-      "https://miscellary.com",
-      "https://wikiracr.com",
-      "https://tracetray.com",
-      "https://portlore.com"
-    ]
-  }
-  </script>
-</head>
-<body class="portfolio-layout">
-<header class="site-header">
-<a class="site-name" href="#top">Portfolio</a>
-<nav aria-label="Main navigation">
-<a href="#projects">Projects</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-<a href="https://github.com/Nic-Richard" rel="noopener" target="_blank">GitHub</a>
-<a href="https://www.linkedin.com/in/nic-richard/" rel="noopener" target="_blank">LinkedIn</a>
-<button aria-label="Switch to dark mode" class="theme-toggle" id="theme-toggle" title="Toggle dark mode" type="button">
-<svg aria-hidden="true" fill="none" height="15" id="theme-icon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
-</button>
-</nav>
-</header>
-<main id="top">
-<section class="intro">
-<div>
-<p class="eyebrow">Full-stack developer</p>
-<h1>Hey, I'm Nic.</h1>
-<p class="intro-copy">I'm a Computer Science graduate building polished web, mobile, and desktop applications from ambitious ideas.</p>
-<div class="intro-actions">
-<a class="button primary" data-project-jump="miscellary" href="#miscellary">View projects</a>
-<a class="button secondary" href="mailto:nic@nicrichard.dev">nic@nicrichard.dev</a>
-</div>
-</div>
-<aside class="availability-card">
-<div class="availability-status"><span></span>Available for work</div>
-<h2>Open to new roles and freelance work</h2>
-<p>I'm looking for a software development role where I can keep building things I'm proud of. I also take on commissioned projects, from web apps to desktop tools.</p>
-<div class="quick-links">
-<a href="https://miscellary.com" rel="noopener" target="_blank">miscellary.com <span>↗</span></a>
-<a href="https://tracetray.com" rel="noopener" target="_blank">tracetray.com <span>↗</span></a>
-<a href="https://wikiracr.com" rel="noopener" target="_blank">wikiracr.com <span>↗</span></a>
-<a href="https://portlore.com" rel="noopener" target="_blank">portlore.com <span>↗</span></a>
-</div>
-</aside>
-</section>
-<section class="project-intro" id="projects">
-<p class="eyebrow">Projects</p>
-<h2>A few things I've built</h2>
-<p>These are the projects I've spent the most time building and refining.</p>
-</section>
-<article class="project device-project" id="miscellary"><div aria-label="Miscellary project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" disabled="" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>1/5</span><button aria-label="Next project" class="project-nav-button" data-project-jump="portlore" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
-<div class="project-visual misc-theme">
-<div class="project-identity">
-<h2>Miscellary</h2>
-<p>Social collecting platform</p>
-<span class="live-status"><i></i> Live</span>
-</div>
-<div class="portlore-gallery-wrap device-gallery">
-<div aria-label="Miscellary screenshots" class="portlore-tabs" role="tablist">
-<button aria-selected="true" class="portlore-tab active" data-device-tab="desktop" role="tab" type="button">Desktop</button>
-<button aria-selected="false" class="portlore-tab" data-device-tab="mobile" role="tab" type="button">Mobile</button>
-</div>
-<div class="portlore-panel active" data-device-panel="desktop">
-<div class="gallery-shell portlore-desktop-shell">
-<button aria-label="Previous Miscellary desktop screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="miscellary-desktop" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery" id="gallery-miscellary-desktop">
-<figure><img alt="Miscellary desktop homepage with cards, binder, and packs" src="assets/images/miscellary/desktop/01-homepage.png"/></figure>
-<figure><img alt="Miscellary published Film Cameras set and binder" src="assets/images/miscellary/desktop/02-film-cameras-binder.png"/></figure>
-<figure><img alt="Miscellary Hasselblad card inspector" src="assets/images/miscellary/desktop/03-card-inspector.png"/></figure>
-<figure><img alt="Miscellary Packs feed and collection progress" src="assets/images/miscellary/desktop/04-packs.png"/></figure>
-<figure><img alt="Miscellary My cards collection with rarity totals, spare copies and set filters" src="assets/images/miscellary/desktop/10-my-cards.png"/></figure>
-<figure><img alt="Miscellary trade offers between collectors" src="assets/images/miscellary/desktop/05-trades.png"/></figure>
-<figure><img alt="Miscellary Sea Holly card editor with live preview" src="assets/images/miscellary/desktop/06-card-editor.png"/></figure>
-<figure><img alt="Miscellary flower pack ready to open" src="assets/images/miscellary/desktop/07-pack-unopened.png"/></figure>
-<figure><img alt="Miscellary flower pack reveal in progress" src="assets/images/miscellary/desktop/08-pack-mid-reveal.png"/></figure>
-<figure><img alt="Miscellary completed flower pack opening" src="assets/images/miscellary/desktop/09-pack-complete.png"/></figure>
-</div>
-<button aria-label="Next Miscellary desktop screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="miscellary-desktop" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots" data-gallery-dots="miscellary-desktop"></div>
-</div>
-</div>
-<div class="portlore-panel" data-device-panel="mobile" hidden="">
-<div class="mobile-carousel-shell" data-mobile-gallery="miscellary-mobile">
-<button aria-label="Previous Miscellary mobile screenshot" class="gallery-arrow previous" data-mobile-step="-1" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="mobile-carousel-viewport"><div class="mobile-carousel-track"></div></div>
-<button aria-label="Next Miscellary mobile screenshot" class="gallery-arrow next" data-mobile-step="1" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots"></div>
-<div class="mobile-carousel-source" hidden>
-<img alt="Miscellary Android Browse screen with featured cards and published sets" src="assets/images/miscellary/mobile/october-2026/01-browse.png"/>
-<img alt="Miscellary Android Consoles set with its Game Boy pack artwork and collection tabs" src="assets/images/miscellary/mobile/october-2026/02-set.png"/>
-<img alt="Miscellary Android Packs page filtered to Garden Birds, with a free pack and recent cards" src="assets/images/miscellary/mobile/october-2026/09-packs.png"/>
-<img alt="Miscellary Android Film Cameras binder in the full-screen landscape viewer" data-orientation="landscape" src="assets/images/miscellary/mobile/october-2026/03-binder.png"/>
-<img alt="Miscellary Android Hasselblad 500C card inspector with front and back controls" src="assets/images/miscellary/mobile/october-2026/04-inspector.png"/>
-<img alt="Miscellary Android Consoles pack ready to tear open" src="assets/images/miscellary/mobile/october-2026/08-pack.png"/>
-<img alt="Miscellary Android pack reveal with a Game Boy and four cards left to reveal" src="assets/images/miscellary/mobile/october-2026/05-reveal.png"/>
-<img alt="Miscellary Android My cards screen filtered to Film Cameras, with collection totals and spare copies" src="assets/images/miscellary/mobile/october-2026/06-collection.png"/>
-<img alt="Miscellary Android Canon AE-1 card editor with its live proof and photo" src="assets/images/miscellary/mobile/october-2026/07-editor.png"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-details">
-<div class="project-copy">
-<p class="project-focus">A web and Android platform built around user-created trading card sets</p>
-<p>Miscellary started with the idea of letting people turn almost any subject into a collectible card set. Creators design and publish sets, while other users collect them through packs and trade owned copies.</p>
-<p>The project grew into a full web and mobile product with social features, collection management, and a shared card rendering system. A lot of the technical work has gone into keeping ownership, trading, published card data, and visual rendering consistent across both platforms.</p>
-</div>
-<aside class="project-meta">
-<div><span>Built around</span><p>A Django and PostgreSQL backend with transactional collecting and trading, paired with shared web/mobile card rendering and baked presentation assets.</p></div>
-<div><span>Stack</span><p>TypeScript, Next.js, React Native, Expo, Django, PostgreSQL, Docker, AWS</p></div>
-<div class="project-links"><span>Links</span><a href="https://miscellary.com" rel="noopener" target="_blank">Explore Miscellary ↗</a><a href="https://github.com/Nic-Richard/miscellary" rel="noopener" target="_blank">GitHub ↗</a></div>
-</aside>
-</div>
-</article>
-<article class="project device-project" id="portlore"><div aria-label="Portlore project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" data-project-jump="miscellary" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>2/5</span><button aria-label="Next project" class="project-nav-button" data-project-jump="seed-placement" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
-<div class="project-visual port-theme">
-<div class="project-identity">
-<h2>Portlore</h2>
-<p>Geographic data and travel planning</p>
-<span class="live-status"><i></i> Live</span>
-</div>
-<div class="portlore-gallery-wrap device-gallery">
-<div aria-label="Portlore screenshots" class="portlore-tabs" role="tablist">
-<button aria-selected="true" class="portlore-tab active" data-device-tab="desktop" role="tab" type="button">Desktop</button>
-<button aria-selected="false" class="portlore-tab" data-device-tab="mobile" role="tab" type="button">Mobile</button>
-</div>
-<div class="portlore-panel active" data-device-panel="desktop">
-<div class="gallery-shell portlore-desktop-shell">
-<button aria-label="Previous Portlore desktop screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="portlore-desktop" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery" id="gallery-portlore-desktop">
-<figure><img alt="Portlore desktop Halifax welcome screen with the all-aboard time" src="assets/images/portlore/desktop-01-landing.png"/></figure>
-<figure><img alt="Portlore desktop Halifax stops by walking time beside the route map" src="assets/images/portlore/desktop-02-guide.png"/></figure>
-<figure><img alt="Portlore desktop stop details over the guide map" src="assets/images/portlore/desktop-03-stop-detail.png"/></figure>
-<figure><img alt="Portlore desktop day timeline with walking legs" src="assets/images/portlore/desktop-04-itinerary.png"/></figure>
-<figure><img alt="Portlore desktop Halifax port page" src="assets/images/portlore/desktop-05-port-page.png"/></figure>
-</div>
-<button aria-label="Next Portlore desktop screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="portlore-desktop" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots" data-gallery-dots="portlore-desktop"></div>
-</div>
-</div>
-<div class="portlore-panel" data-device-panel="mobile" hidden="">
-<div class="mobile-carousel-shell" data-mobile-gallery="portlore-mobile">
-<button aria-label="Previous Portlore mobile screenshot" class="gallery-arrow previous" data-mobile-step="-1" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="mobile-carousel-viewport"><div class="mobile-carousel-track"></div></div>
-<button aria-label="Next Portlore mobile screenshot" class="gallery-arrow next" data-mobile-step="1" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots"></div>
-<div class="mobile-carousel-source" hidden>
-<img alt="Portlore mobile Halifax welcome screen" src="assets/images/portlore/mobile-01-landing.png"/>
-<img alt="Portlore mobile Halifax stops by walking time" src="assets/images/portlore/mobile-02-guide.png"/>
-<img alt="Portlore mobile stop details" src="assets/images/portlore/mobile-03-stop-detail.png"/>
-<img alt="Portlore mobile map with the planned walking route" src="assets/images/portlore/mobile-04-map.png"/>
-<img alt="Portlore mobile day timeline" src="assets/images/portlore/mobile-05-itinerary.png"/>
-<img alt="Portlore mobile Halifax port page" src="assets/images/portlore/mobile-06-port-page.png"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-details">
-<div class="project-copy">
-<p class="project-focus">A cruise-port guide built around what makes each stop worth exploring</p>
-<p>Cruise passengers often only see the obvious attractions near a port and miss the smaller places that give a destination its character.</p>
-<p>Portlore makes those places easier to find. It starts from where passengers actually disembark, gathers nearby points of interest, and narrows them into a practical set of recommendations that includes both major sights and worthwhile local finds. Passengers can turn those recommendations into a realistic plan for the time they have ashore.</p>
-</div>
-<aside class="project-meta">
-<div><span>Built around</span><p>Finding and curating useful places around cruise ports, then turning them into practical day plans.</p></div>
-<div><span>Stack</span><p>JavaScript, Node.js, Express, OpenStreetMap, OSRM, Wikipedia, Google Places, Gemini</p></div>
-<div class="project-links"><span>Links</span><a href="https://portlore.com" rel="noopener" target="_blank">Explore Portlore ↗</a><a href="https://github.com/Nic-Richard/portlore" rel="noopener" target="_blank">GitHub ↗</a></div>
-</aside>
-</div>
-</article>
-<article class="project" id="seed-placement"><div aria-label="Seed Placement Randomizer project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" data-project-jump="portlore" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>3/5</span><button aria-label="Next project" class="project-nav-button" data-project-jump="tracetray" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
-<div class="project-visual seed-theme">
-<div class="project-identity">
-<h2>Seed Placement Randomizer</h2>
-<p>Commissioned desktop and Android app</p>
-<span class="live-status"><i></i> Released, v1.2.0</span>
-</div>
-<div class="portlore-gallery-wrap device-gallery">
-<div aria-label="Seed Placement Randomizer screenshots" class="portlore-tabs" role="tablist">
-<button aria-selected="true" class="portlore-tab active" data-device-tab="desktop" role="tab" type="button">Desktop</button>
-<button aria-selected="false" class="portlore-tab" data-device-tab="mobile" role="tab" type="button">Mobile</button>
-</div>
-<div class="portlore-panel active" data-device-panel="desktop">
-<div class="gallery-shell portlore-desktop-shell">
-<button aria-label="Previous Seed Placement Randomizer screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="seed-placement" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery" id="gallery-seed-placement">
-<figure><img alt="Seed Placement Randomizer with seven randomized dishes on the rack" src="assets/images/seed-placement/desktop-01-rack.png"/></figure>
-<figure><img alt="Seed Placement Randomizer dish inspector with seed coordinates and layout code" src="assets/images/seed-placement/desktop-02-inspector.png"/></figure>
-</div>
-<button aria-label="Next Seed Placement Randomizer screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="seed-placement" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots" data-gallery-dots="seed-placement"></div>
-</div>
-</div>
-<div class="portlore-panel" data-device-panel="mobile" hidden="">
-<div class="mobile-carousel-shell" data-mobile-gallery="seed-placement-mobile">
-<div class="mobile-carousel-viewport"><div class="mobile-carousel-track"></div></div>
-<div class="gallery-dots" hidden></div>
-<div class="mobile-carousel-source" hidden>
-<img alt="Seed Placement Randomizer phone layout with seven dishes on the rack and seed placement controls" src="assets/images/seed-placement/mobile-01-rack.png"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-details">
-<div class="project-copy">
-<p class="project-focus">A desktop and Android app that takes human bias out of seed bioassays</p>
-<p>A researcher running seed germination experiments asked me for a way to place seeds in each petri dish, and each dish on the rack, without unconsciously favouring some positions. This was my first commission, and I took it from first conversation to a released app in about a day.</p>
-<p>The app samples every valid layout with equal probability and switches to a Markov chain when the dish gets crowded. Each dish gets a short layout code that reproduces it exactly on any machine, and a test suite checks spacing, uniformity, and reproducibility. Around that is an interface built to read clearly on a projector, with exports for seed coordinates, the rack, and printable 1:1 templates.</p>
-<p>The client returned for an Android version, delivered in v1.2.0 using the same C# and Avalonia code. Run files move the complete rack between desktop and phone, so an experiment set up on a computer can go straight to the bench.</p>
-</div>
-<aside class="project-meta">
-<div><span>Built around</span><p>Unbiased, reproducible placement with statistical tests behind it, in an app a researcher can use and present without instruction.</p></div>
-<div><span>Stack</span><p>C#, .NET 10, Avalonia, xUnit, GitHub Actions for Windows, macOS, Linux, and signed Android builds</p></div>
-<div class="project-links"><span>Links</span><a href="https://github.com/Nic-Richard/seed-placement-randomizer/releases/latest" rel="noopener" target="_blank">Download ↗</a><a href="https://github.com/Nic-Richard/seed-placement-randomizer" rel="noopener" target="_blank">GitHub ↗</a></div>
-</aside>
-</div>
-</article>
-<article class="project" id="tracetray"><div aria-label="Tracetray project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" data-project-jump="seed-placement" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>4/5</span><button aria-label="Next project" class="project-nav-button" data-project-jump="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
-<div class="project-visual trace-theme">
-<div class="project-identity">
-<h2>TraceTray</h2>
-<p>Behavioural analytics</p>
-<span class="live-status"><i></i> Live beta</span>
-</div>
-<div class="gallery-shell">
-<button aria-label="Previous TraceTray screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="tracetray" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery" id="gallery-tracetray">
-<figure><img alt="TraceTray overview populated with fictional Morrowpine Outfitters demo data" src="assets/images/tracetray/desktop-01-overview.png"/></figure>
-<figure><img alt="TraceTray behaviour trends for the fictional commerce demo" src="assets/images/tracetray/desktop-02-trends.png"/></figure>
-<figure><img alt="TraceTray visitor segments for the fictional commerce demo" src="assets/images/tracetray/desktop-03-visitors.png"/></figure>
-<figure><img alt="TraceTray recommendations shown in dark mode" src="assets/images/tracetray/desktop-04-insights.png"/></figure>
-<figure><img alt="TraceTray attention profile shown in dark mode" src="assets/images/tracetray/desktop-05-attention.png"/></figure>
-<figure><img alt="TraceTray commerce journey and conversion paths" src="assets/images/tracetray/desktop-06-journey.png"/></figure>
-<figure><img alt="TraceTray recent commerce sessions" src="assets/images/tracetray/desktop-07-sessions.png"/></figure>
-<figure><img alt="TraceTray tracker embed setup shown in dark mode" src="assets/images/tracetray/desktop-08-embed.png"/></figure>
-</div>
-<button aria-label="Next TraceTray screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="tracetray" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots" data-gallery-dots="tracetray"></div>
-</div>
-</div>
-<div class="project-details">
-<div class="project-copy">
-<p class="project-focus">Behavioural analytics from lightweight interaction data</p>
-<p>TraceTray is built around the idea that you can derive a surprising amount of useful behavioural information from very little raw data.</p>
-<p>A lightweight tracker collects simple interaction signals such as cursor movement, clicks, scrolling, and pauses. Machine learning and analysis pipelines turn those signals into findings about attention, hesitation, movement, and engagement.</p>
-<p>The dashboard brings those results together with visual summaries and AI-generated explanations to make the analysis easier to interpret.</p>
-</div>
-<aside class="project-meta">
-<div><span>Built around</span><p>Using ML to extract useful UX signals from a lightweight stream of interaction data.</p></div>
-<div><span>Stack</span><p>Node.js, Express, MongoDB, Python, scikit-learn, pandas</p></div>
-<div class="project-links"><span>Links</span><a href="https://tracetray.com" rel="noopener" target="_blank">Live site ↗</a><a href="https://github.com/Nic-Richard/TraceTray" rel="noopener" target="_blank">GitHub ↗</a></div>
-</aside>
-</div>
-</article>
-<article class="project" id="wikiracr"><div aria-label="Wikiracr project navigation" class="project-nav"><button aria-label="Previous project" class="project-nav-button" data-project-jump="tracetray" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 7L6 2L11 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button><span>5/5</span><button aria-label="Next project" class="project-nav-button" disabled="" type="button"><svg aria-hidden="true" fill="none" height="8" viewbox="0 0 12 8" width="12"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></svg></button></div>
-<div class="project-visual wiki-theme">
-<div class="project-identity">
-<h2>WikiRacr</h2>
-<p>Graph search and multiplayer game</p>
-<span class="live-status"><i></i> Live</span>
-</div>
-<div class="gallery-shell">
-<button aria-label="Previous WikiRacr screenshot" class="gallery-arrow previous" data-direction="-1" data-gallery-step="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L2 8L8 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery" id="gallery-wikiracr">
-<figure><img alt="WikiRacr home screen" src="assets/images/wikiracr/desktop-01-home.png"/></figure>
-<figure><img alt="WikiRacr game mode selection" src="assets/images/wikiracr/desktop-02-modes.png"/></figure>
-<figure><img alt="WikiRacr live round at the starting article" src="assets/images/wikiracr/desktop-03-round-start.png"/></figure>
-<figure><img alt="WikiRacr round progressing through Wikipedia" src="assets/images/wikiracr/desktop-04-round-progress.png"/></figure>
-<figure><img alt="WikiRacr completed round and optimal path comparison" src="assets/images/wikiracr/desktop-05-results.png"/></figure>
-</div>
-<button aria-label="Next WikiRacr screenshot" class="gallery-arrow next" data-direction="1" data-gallery-step="wikiracr" type="button"><svg aria-hidden="true" fill="none" height="16" viewbox="0 0 10 16" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L8 8L2 14" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></button>
-<div class="gallery-dots" data-gallery-dots="wikiracr"></div>
-</div>
-</div>
-<div class="project-details">
-<div class="project-copy">
-<p class="project-focus">A competitive Wikipedia navigation game backed by fast graph search</p>
-<p>WikiRacr started as a research project on graph search algorithms for finding shortest paths between Wikipedia articles.</p>
-<p>With forward and reverse link graphs, bidirectional breadth-first search cut route-finding time by orders of magnitude compared with the other approaches I tested. That made it practical to curate large numbers of start and goal pairs and put my own spin on the classic wikiracing game, with routes that are intentionally chosen instead of completely random.</p>
-<p>The research grew into a full game with Solo and Daily Challenge, plus multiplayer modes including Classic, Ranked, Speedrun, Knockout, Clicks, Score, and Higher or Lower.</p>
-</div>
-<aside class="project-meta">
-<div><span>Built around</span><p>Fast shortest-path search over Wikipedia’s link graph and curated article pairs at scale.</p></div>
-<div><span>Stack</span><p>React, Vite, Node.js, Socket.IO, SQLite, Clerk, Stripe</p></div>
-<div class="project-links"><span>Links</span><a href="https://wikiracr.com" rel="noopener" target="_blank">Play WikiRacr ↗</a><a href="https://github.com/Nic-Richard/wikiracr" rel="noopener" target="_blank">GitHub ↗</a></div>
-</aside>
-</div>
-</article>
-<section class="bottom-grid" id="about">
-<div>
-<p class="eyebrow">About</p>
-<h2>About me</h2>
-<p>I graduated from UNB Saint John in 2026 with a Computer Science degree and a minor in Business Administration.</p>
-<p>With so many software projects already out there, I try to build things that offer real value and approach problems from a unique angle. I care about building software that works well, feels polished, and is genuinely useful. It's a good feeling when something I built makes someone's life easier.</p>
-<p>I'm looking for a developer role, and I also take on freelance projects.</p>
-</div>
-<div id="contact">
-<p class="eyebrow">Contact</p>
-<div class="contact-list">
-<a href="mailto:nic@nicrichard.dev"><strong>Email</strong><span>nic@nicrichard.dev</span></a>
-<a href="https://github.com/Nic-Richard" rel="noopener" target="_blank"><strong>GitHub</strong><span>github.com/Nic-Richard</span></a>
-<a href="https://www.linkedin.com/in/nic-richard/" rel="noopener" target="_blank"><strong>LinkedIn</strong><span>in/nic-richard</span></a>
-<a href="https://miscellary.com" rel="noopener" target="_blank"><strong>Miscellary</strong><span>miscellary.com</span></a>
-<a href="https://wikiracr.com" rel="noopener" target="_blank"><strong>WikiRacr</strong><span>wikiracr.com</span></a>
-<a href="https://tracetray.com" rel="noopener" target="_blank"><strong>TraceTray</strong><span>tracetray.com</span></a>
-<a href="https://portlore.com" rel="noopener" target="_blank"><strong>Portlore</strong><span>portlore.com</span></a>
-</div>
-</div>
-</section>
-</main>
-<footer><span>Visits are measured with <a href="https://tracetray.com/privacy.html" rel="noopener" target="_blank">TraceTray</a></span><span>Built by Nic Richard</span></footer>
-<script>
-  window.TraceTray = { endpoint: "https://tracetray.com/collect", key: "tt_t7KCnd84TPLFanoE" };
-</script>
-<script src="https://tracetray.com/client/tracker.js" defer></script>
-<script src="assets/js/main.js?v=2b5ee5df681d"></script>
-</body>
+    </script>
+  </head>
+  <body class="portfolio-layout">
+    <header class="site-header">
+      <a class="site-name" href="#top">Nic Richard</a>
+      <nav aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/Nic-Richard" rel="noopener" target="_blank"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/nic-richard/"
+          rel="noopener"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <button
+          aria-label="Switch to dark mode"
+          class="theme-toggle"
+          id="theme-toggle"
+          title="Toggle dark mode"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="15"
+            id="theme-icon"
+            stroke="currentColor"
+            stroke-width="2"
+            viewbox="0 0 24 24"
+            width="15"
+          >
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Full-stack developer</p>
+          <h1>Hey, I'm Nic.</h1>
+          <p class="intro-copy">
+            I'm a Computer Science graduate building polished web, mobile, and
+            desktop applications from ambitious ideas.
+          </p>
+          <div class="intro-actions">
+            <a
+              class="button primary"
+              data-project-jump="miscellary"
+              href="#miscellary"
+              >View projects</a
+            >
+            <a class="button secondary" href="mailto:nic@nicrichard.dev"
+              >nic@nicrichard.dev</a
+            >
+          </div>
+        </div>
+        <aside class="availability-card">
+          <div class="availability-status"><span></span>Available for work</div>
+          <h2>Open to new roles and freelance work</h2>
+          <p>
+            I'm looking for a software development role where I can keep
+            building things I'm proud of. I also take on commissioned projects,
+            from web apps to desktop tools.
+          </p>
+        </aside>
+      </section>
+      <section class="project-intro" id="projects">
+        <p class="eyebrow">Projects</p>
+        <h2>A few things I've built</h2>
+        <p>
+          These are the projects I've spent the most time building and refining.
+        </p>
+      </section>
+      <article class="project device-project" id="miscellary">
+        <div aria-label="Miscellary project navigation" class="project-nav">
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>1/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            data-project-jump="portlore"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual misc-theme">
+          <div class="project-identity">
+            <h2>Miscellary</h2>
+            <p>Social collecting platform</p>
+            <span class="live-status"><i></i> Live</span>
+          </div>
+          <div class="portlore-gallery-wrap device-gallery">
+            <div
+              aria-label="Miscellary screenshots"
+              class="portlore-tabs"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="portlore-tab active"
+                data-device-tab="desktop"
+                role="tab"
+                type="button"
+              >
+                Desktop
+              </button>
+              <button
+                aria-selected="false"
+                class="portlore-tab"
+                data-device-tab="mobile"
+                role="tab"
+                type="button"
+              >
+                Mobile
+              </button>
+            </div>
+            <div class="portlore-panel active" data-device-panel="desktop">
+              <div class="gallery-shell portlore-desktop-shell">
+                <button
+                  aria-label="Previous Miscellary desktop screenshot"
+                  class="gallery-arrow previous"
+                  data-direction="-1"
+                  data-gallery-step="miscellary-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery" id="gallery-miscellary-desktop">
+                  <figure>
+                    <img
+                      alt="Miscellary desktop homepage with cards, binder, and packs"
+                      src="assets/images/miscellary/desktop/01-homepage.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary published Film Cameras set and binder"
+                      src="assets/images/miscellary/desktop/02-film-cameras-binder.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary Hasselblad card inspector"
+                      src="assets/images/miscellary/desktop/03-card-inspector.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary Packs feed and collection progress"
+                      src="assets/images/miscellary/desktop/04-packs.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary My cards collection with rarity totals, spare copies and set filters"
+                      src="assets/images/miscellary/desktop/10-my-cards.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary trade offers between collectors"
+                      src="assets/images/miscellary/desktop/05-trades.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary Sea Holly card editor with live preview"
+                      src="assets/images/miscellary/desktop/06-card-editor.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary flower pack ready to open"
+                      src="assets/images/miscellary/desktop/07-pack-unopened.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary flower pack reveal in progress"
+                      src="assets/images/miscellary/desktop/08-pack-mid-reveal.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Miscellary completed flower pack opening"
+                      src="assets/images/miscellary/desktop/09-pack-complete.png"
+                    />
+                  </figure>
+                </div>
+                <button
+                  aria-label="Next Miscellary desktop screenshot"
+                  class="gallery-arrow next"
+                  data-direction="1"
+                  data-gallery-step="miscellary-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="gallery-dots"
+                  data-gallery-dots="miscellary-desktop"
+                ></div>
+              </div>
+            </div>
+            <div class="portlore-panel" data-device-panel="mobile" hidden="">
+              <div
+                class="mobile-carousel-shell"
+                data-mobile-gallery="miscellary-mobile"
+              >
+                <button
+                  aria-label="Previous Miscellary mobile screenshot"
+                  class="gallery-arrow previous"
+                  data-mobile-step="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="mobile-carousel-viewport">
+                  <div class="mobile-carousel-track"></div>
+                </div>
+                <button
+                  aria-label="Next Miscellary mobile screenshot"
+                  class="gallery-arrow next"
+                  data-mobile-step="1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery-dots"></div>
+                <div class="mobile-carousel-source" hidden>
+                  <img
+                    alt="Miscellary Android Browse screen with featured cards and published sets"
+                    src="assets/images/miscellary/mobile/october-2026/01-browse.png"
+                  />
+                  <img
+                    alt="Miscellary Android Consoles set with its Game Boy pack artwork and collection tabs"
+                    src="assets/images/miscellary/mobile/october-2026/02-set.png"
+                  />
+                  <img
+                    alt="Miscellary Android Packs page filtered to Garden Birds, with a free pack and recent cards"
+                    src="assets/images/miscellary/mobile/october-2026/09-packs.png"
+                  />
+                  <img
+                    alt="Miscellary Android Film Cameras binder in the full-screen landscape viewer"
+                    data-orientation="landscape"
+                    src="assets/images/miscellary/mobile/october-2026/03-binder.png"
+                  />
+                  <img
+                    alt="Miscellary Android Hasselblad 500C card inspector with front and back controls"
+                    src="assets/images/miscellary/mobile/october-2026/04-inspector.png"
+                  />
+                  <img
+                    alt="Miscellary Android Consoles pack ready to tear open"
+                    src="assets/images/miscellary/mobile/october-2026/08-pack.png"
+                  />
+                  <img
+                    alt="Miscellary Android pack reveal with a Game Boy and four cards left to reveal"
+                    src="assets/images/miscellary/mobile/october-2026/05-reveal.png"
+                  />
+                  <img
+                    alt="Miscellary Android My cards screen filtered to Film Cameras, with collection totals and spare copies"
+                    src="assets/images/miscellary/mobile/october-2026/06-collection.png"
+                  />
+                  <img
+                    alt="Miscellary Android Canon AE-1 card editor with its live proof and photo"
+                    src="assets/images/miscellary/mobile/october-2026/07-editor.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              A web and Android platform built around user-created trading card
+              sets
+            </p>
+            <p>
+              Miscellary started with the idea of letting people turn almost any
+              subject into a collectible card set. Creators design and publish
+              sets, while other users collect them through packs and trade owned
+              copies.
+            </p>
+            <p>
+              The project grew into a full web and mobile product with social
+              features, collection management, and a shared card rendering
+              system. A lot of the technical work has gone into keeping
+              ownership, trading, published card data, and visual rendering
+              consistent across both platforms.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                A Django and PostgreSQL backend with transactional collecting
+                and trading, paired with shared web/mobile card rendering and
+                baked presentation assets.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>
+                TypeScript, Next.js, React Native, Expo, Django, PostgreSQL,
+                Docker, AWS
+              </p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a href="https://miscellary.com" rel="noopener" target="_blank"
+                >Explore Miscellary ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/miscellary"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <article class="project device-project" id="portlore">
+        <div aria-label="Portlore project navigation" class="project-nav">
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
+            data-project-jump="miscellary"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>2/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            data-project-jump="seed-placement"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual port-theme">
+          <div class="project-identity">
+            <h2>Portlore</h2>
+            <p>Geographic data and travel planning</p>
+            <span class="live-status"><i></i> Live</span>
+          </div>
+          <div class="portlore-gallery-wrap device-gallery">
+            <div
+              aria-label="Portlore screenshots"
+              class="portlore-tabs"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="portlore-tab active"
+                data-device-tab="desktop"
+                role="tab"
+                type="button"
+              >
+                Desktop
+              </button>
+              <button
+                aria-selected="false"
+                class="portlore-tab"
+                data-device-tab="mobile"
+                role="tab"
+                type="button"
+              >
+                Mobile
+              </button>
+            </div>
+            <div class="portlore-panel active" data-device-panel="desktop">
+              <div class="gallery-shell portlore-desktop-shell">
+                <button
+                  aria-label="Previous Portlore desktop screenshot"
+                  class="gallery-arrow previous"
+                  data-direction="-1"
+                  data-gallery-step="portlore-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery" id="gallery-portlore-desktop">
+                  <figure>
+                    <img
+                      alt="Portlore desktop Halifax welcome screen with the all-aboard time"
+                      src="assets/images/portlore/desktop-01-landing.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Portlore desktop Halifax stops by walking time beside the route map"
+                      src="assets/images/portlore/desktop-02-guide.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Portlore desktop stop details over the guide map"
+                      src="assets/images/portlore/desktop-03-stop-detail.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Portlore desktop day timeline with walking legs"
+                      src="assets/images/portlore/desktop-04-itinerary.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Portlore desktop Halifax port page"
+                      src="assets/images/portlore/desktop-05-port-page.png"
+                    />
+                  </figure>
+                </div>
+                <button
+                  aria-label="Next Portlore desktop screenshot"
+                  class="gallery-arrow next"
+                  data-direction="1"
+                  data-gallery-step="portlore-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="gallery-dots"
+                  data-gallery-dots="portlore-desktop"
+                ></div>
+              </div>
+            </div>
+            <div class="portlore-panel" data-device-panel="mobile" hidden="">
+              <div
+                class="mobile-carousel-shell"
+                data-mobile-gallery="portlore-mobile"
+              >
+                <button
+                  aria-label="Previous Portlore mobile screenshot"
+                  class="gallery-arrow previous"
+                  data-mobile-step="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="mobile-carousel-viewport">
+                  <div class="mobile-carousel-track"></div>
+                </div>
+                <button
+                  aria-label="Next Portlore mobile screenshot"
+                  class="gallery-arrow next"
+                  data-mobile-step="1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery-dots"></div>
+                <div class="mobile-carousel-source" hidden>
+                  <img
+                    alt="Portlore mobile Halifax welcome screen"
+                    src="assets/images/portlore/mobile-01-landing.png"
+                  />
+                  <img
+                    alt="Portlore mobile Halifax stops by walking time"
+                    src="assets/images/portlore/mobile-02-guide.png"
+                  />
+                  <img
+                    alt="Portlore mobile stop details"
+                    src="assets/images/portlore/mobile-03-stop-detail.png"
+                  />
+                  <img
+                    alt="Portlore mobile map with the planned walking route"
+                    src="assets/images/portlore/mobile-04-map.png"
+                  />
+                  <img
+                    alt="Portlore mobile day timeline"
+                    src="assets/images/portlore/mobile-05-itinerary.png"
+                  />
+                  <img
+                    alt="Portlore mobile Halifax port page"
+                    src="assets/images/portlore/mobile-06-port-page.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              A cruise-port guide built around what makes each stop worth
+              exploring
+            </p>
+            <p>
+              Cruise passengers often only see the obvious attractions near a
+              port and miss the smaller places that give a destination its
+              character.
+            </p>
+            <p>
+              Portlore makes those places easier to find. It starts from where
+              passengers actually disembark, gathers nearby points of interest,
+              and narrows them into a practical set of recommendations that
+              includes both major sights and worthwhile local finds. Passengers
+              can turn those recommendations into a realistic plan for the time
+              they have ashore.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                Finding and curating useful places around cruise ports, then
+                turning them into practical day plans.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>
+                JavaScript, Node.js, Express, OpenStreetMap, OSRM, Wikipedia,
+                Google Places, Gemini
+              </p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a href="https://portlore.com" rel="noopener" target="_blank"
+                >Explore Portlore ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/portlore"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <article class="project" id="seed-placement">
+        <div
+          aria-label="Seed Placement Randomizer project navigation"
+          class="project-nav"
+        >
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
+            data-project-jump="portlore"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>3/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            data-project-jump="tracetray"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual seed-theme">
+          <div class="project-identity">
+            <h2>Seed Placement Randomizer</h2>
+            <p>Commissioned desktop and Android app</p>
+            <span class="live-status"><i></i> Released, v1.2.0</span>
+          </div>
+          <div class="portlore-gallery-wrap device-gallery">
+            <div
+              aria-label="Seed Placement Randomizer screenshots"
+              class="portlore-tabs"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="portlore-tab active"
+                data-device-tab="desktop"
+                role="tab"
+                type="button"
+              >
+                Desktop
+              </button>
+              <button
+                aria-selected="false"
+                class="portlore-tab"
+                data-device-tab="mobile"
+                role="tab"
+                type="button"
+              >
+                Mobile
+              </button>
+            </div>
+            <div class="portlore-panel active" data-device-panel="desktop">
+              <div class="gallery-shell portlore-desktop-shell">
+                <button
+                  aria-label="Previous Seed Placement Randomizer screenshot"
+                  class="gallery-arrow previous"
+                  data-direction="-1"
+                  data-gallery-step="seed-placement"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery" id="gallery-seed-placement">
+                  <figure>
+                    <img
+                      alt="Seed Placement Randomizer with seven randomized dishes on the rack"
+                      src="assets/images/seed-placement/desktop-01-rack.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="Seed Placement Randomizer dish inspector with seed coordinates and layout code"
+                      src="assets/images/seed-placement/desktop-02-inspector.png"
+                    />
+                  </figure>
+                </div>
+                <button
+                  aria-label="Next Seed Placement Randomizer screenshot"
+                  class="gallery-arrow next"
+                  data-direction="1"
+                  data-gallery-step="seed-placement"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="gallery-dots"
+                  data-gallery-dots="seed-placement"
+                ></div>
+              </div>
+            </div>
+            <div class="portlore-panel" data-device-panel="mobile" hidden="">
+              <div
+                class="mobile-carousel-shell"
+                data-mobile-gallery="seed-placement-mobile"
+              >
+                <div class="mobile-carousel-viewport">
+                  <div class="mobile-carousel-track"></div>
+                </div>
+                <div class="gallery-dots" hidden></div>
+                <div class="mobile-carousel-source" hidden>
+                  <img
+                    alt="Seed Placement Randomizer phone layout with seven dishes on the rack and seed placement controls"
+                    src="assets/images/seed-placement/mobile-01-rack.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              A desktop and Android app that takes human bias out of seed
+              bioassays
+            </p>
+            <p>
+              A researcher running seed germination experiments asked me for a
+              way to place seeds in each petri dish, and each dish on the rack,
+              without unconsciously favouring some positions. This was my first
+              commission, and I took it from first conversation to a released
+              app in about a day.
+            </p>
+            <p>
+              The app samples every valid layout with equal probability and
+              switches to a Markov chain when the dish gets crowded. Each dish
+              gets a short layout code that reproduces it exactly on any
+              machine, and a test suite checks spacing, uniformity, and
+              reproducibility. Around that is an interface built to read clearly
+              on a projector, with exports for seed coordinates, the rack, and
+              printable 1:1 templates.
+            </p>
+            <p>
+              The client returned for an Android version, delivered in v1.2.0
+              using the same C# and Avalonia code. Run files move the complete
+              rack between desktop and phone, so an experiment set up on a
+              computer can go straight to the bench.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                Unbiased, reproducible placement with statistical tests behind
+                it, in an app a researcher can use and present without
+                instruction.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>
+                C#, .NET 10, Avalonia, xUnit, GitHub Actions for Windows, macOS,
+                Linux, and signed Android builds
+              </p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a
+                href="https://github.com/Nic-Richard/seed-placement-randomizer/releases/latest"
+                rel="noopener"
+                target="_blank"
+                >Download ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/seed-placement-randomizer"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <article class="project" id="tracetray">
+        <div aria-label="Tracetray project navigation" class="project-nav">
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
+            data-project-jump="seed-placement"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>4/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            data-project-jump="wikiracr"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual trace-theme">
+          <div class="project-identity">
+            <h2>TraceTray</h2>
+            <p>Behavioural analytics</p>
+            <span class="live-status"><i></i> Live beta</span>
+          </div>
+          <div class="gallery-shell">
+            <button
+              aria-label="Previous TraceTray screenshot"
+              class="gallery-arrow previous"
+              data-direction="-1"
+              data-gallery-step="tracetray"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16"
+                viewbox="0 0 10 16"
+                width="10"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 2L2 8L8 14"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                ></path>
+              </svg>
+            </button>
+            <div class="gallery" id="gallery-tracetray">
+              <figure>
+                <img
+                  alt="TraceTray overview populated with fictional Morrowpine Outfitters demo data"
+                  src="assets/images/tracetray/desktop-01-overview.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray behaviour trends for the fictional commerce demo"
+                  src="assets/images/tracetray/desktop-02-trends.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray visitor segments for the fictional commerce demo"
+                  src="assets/images/tracetray/desktop-03-visitors.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray recommendations shown in dark mode"
+                  src="assets/images/tracetray/desktop-04-insights.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray attention profile shown in dark mode"
+                  src="assets/images/tracetray/desktop-05-attention.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray commerce journey and conversion paths"
+                  src="assets/images/tracetray/desktop-06-journey.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray recent commerce sessions"
+                  src="assets/images/tracetray/desktop-07-sessions.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="TraceTray tracker embed setup shown in dark mode"
+                  src="assets/images/tracetray/desktop-08-embed.png"
+                />
+              </figure>
+            </div>
+            <button
+              aria-label="Next TraceTray screenshot"
+              class="gallery-arrow next"
+              data-direction="1"
+              data-gallery-step="tracetray"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16"
+                viewbox="0 0 10 16"
+                width="10"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 2L8 8L2 14"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                ></path>
+              </svg>
+            </button>
+            <div class="gallery-dots" data-gallery-dots="tracetray"></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              Behavioural analytics from lightweight interaction data
+            </p>
+            <p>
+              TraceTray is built around the idea that you can derive a
+              surprising amount of useful behavioural information from very
+              little raw data.
+            </p>
+            <p>
+              A lightweight tracker collects simple interaction signals such as
+              cursor movement, clicks, scrolling, and pauses. Machine learning
+              and analysis pipelines turn those signals into findings about
+              attention, hesitation, movement, and engagement.
+            </p>
+            <p>
+              The dashboard brings those results together with visual summaries
+              and AI-generated explanations to make the analysis easier to
+              interpret.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                Using ML to extract useful UX signals from a lightweight stream
+                of interaction data.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>Node.js, Express, MongoDB, Python, scikit-learn, pandas</p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a href="https://tracetray.com" rel="noopener" target="_blank"
+                >Live site ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/TraceTray"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <article class="project" id="wikiracr">
+        <div aria-label="Wikiracr project navigation" class="project-nav">
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
+            data-project-jump="tracetray"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>5/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            disabled=""
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual wiki-theme">
+          <div class="project-identity">
+            <h2>WikiRacr</h2>
+            <p>Graph search and multiplayer game</p>
+            <span class="live-status"><i></i> Live</span>
+          </div>
+          <div class="gallery-shell">
+            <button
+              aria-label="Previous WikiRacr screenshot"
+              class="gallery-arrow previous"
+              data-direction="-1"
+              data-gallery-step="wikiracr"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16"
+                viewbox="0 0 10 16"
+                width="10"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 2L2 8L8 14"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                ></path>
+              </svg>
+            </button>
+            <div class="gallery" id="gallery-wikiracr">
+              <figure>
+                <img
+                  alt="WikiRacr home screen"
+                  src="assets/images/wikiracr/desktop-01-home.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="WikiRacr game mode selection"
+                  src="assets/images/wikiracr/desktop-02-modes.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="WikiRacr live round at the starting article"
+                  src="assets/images/wikiracr/desktop-03-round-start.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="WikiRacr round progressing through Wikipedia"
+                  src="assets/images/wikiracr/desktop-04-round-progress.png"
+                />
+              </figure>
+              <figure>
+                <img
+                  alt="WikiRacr completed round and optimal path comparison"
+                  src="assets/images/wikiracr/desktop-05-results.png"
+                />
+              </figure>
+            </div>
+            <button
+              aria-label="Next WikiRacr screenshot"
+              class="gallery-arrow next"
+              data-direction="1"
+              data-gallery-step="wikiracr"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="16"
+                viewbox="0 0 10 16"
+                width="10"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 2L8 8L2 14"
+                  stroke="white"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                ></path>
+              </svg>
+            </button>
+            <div class="gallery-dots" data-gallery-dots="wikiracr"></div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              A competitive Wikipedia navigation game backed by fast graph
+              search
+            </p>
+            <p>
+              WikiRacr started as a research project on graph search algorithms
+              for finding shortest paths between Wikipedia articles.
+            </p>
+            <p>
+              With forward and reverse link graphs, bidirectional breadth-first
+              search cut route-finding time by orders of magnitude compared with
+              the other approaches I tested. That made it practical to curate
+              large numbers of start and goal pairs and put my own spin on the
+              classic wikiracing game, with routes that are intentionally chosen
+              instead of completely random.
+            </p>
+            <p>
+              The research grew into a full game with Solo and Daily Challenge,
+              plus multiplayer modes including Classic, Ranked, Speedrun,
+              Knockout, Clicks, Score, and Higher or Lower.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                Fast shortest-path search over Wikipedia’s link graph and
+                curated article pairs at scale.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>React, Vite, Node.js, Socket.IO, SQLite, Clerk, Stripe</p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a href="https://wikiracr.com" rel="noopener" target="_blank"
+                >Play WikiRacr ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/wikiracr"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <section class="bottom-grid" id="about">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>About me</h2>
+          <p>
+            I graduated from UNB Saint John in 2026 with a Computer Science
+            degree and a minor in Business Administration.
+          </p>
+          <p>
+            With so many software projects already out there, I try to build
+            things that offer real value and approach problems from a unique
+            angle. I care about building software that works well, feels
+            polished, and is genuinely useful. It's a good feeling when
+            something I built makes someone's life easier.
+          </p>
+          <p>
+            I'm looking for a developer role, and I also take on freelance
+            projects.
+          </p>
+        </div>
+        <div id="contact">
+          <p class="eyebrow">Contact</p>
+          <div class="contact-list">
+            <a href="mailto:nic@nicrichard.dev"
+              ><strong>Email</strong><span>nic@nicrichard.dev</span></a
+            >
+            <a
+              href="https://github.com/Nic-Richard"
+              rel="noopener"
+              target="_blank"
+              ><strong>GitHub</strong><span>github.com/Nic-Richard</span></a
+            >
+            <a
+              href="https://www.linkedin.com/in/nic-richard/"
+              rel="noopener"
+              target="_blank"
+              ><strong>LinkedIn</strong><span>in/nic-richard</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span
+        >Visits are measured with
+        <a
+          href="https://tracetray.com/privacy.html"
+          rel="noopener"
+          target="_blank"
+          >TraceTray</a
+        ></span
+      ><span>Built by Nic Richard</span>
+    </footer>
+    <script>
+      window.TraceTray = {
+        endpoint: "https://tracetray.com/collect",
+        key: "tt_t7KCnd84TPLFanoE",
+      };
+    </script>
+    <script src="https://tracetray.com/client/tracker.js" defer></script>
+    <script src="assets/js/main.js?v=2b5ee5df681d"></script>
+  </body>
 </html>

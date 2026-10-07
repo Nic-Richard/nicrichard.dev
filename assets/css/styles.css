@@ -53,6 +53,7 @@ a:focus-visible,button:focus-visible {
 .site-name {
   font-size: 14px;
   font-weight: 650;
+  white-space: nowrap;
 }
 
 .site-header nav {
@@ -171,27 +172,6 @@ a:focus-visible,button:focus-visible {
   font-size: 13px;
   line-height: 1.65;
   margin-top: 9px;
-}
-
-.quick-links {
-  border-top: 1px solid #343438;
-  display: flex;
-  flex-direction: column;
-  margin-top: 22px;
-  padding-top: 14px;
-}
-
-.quick-links a {
-  align-items: center;
-  color: #b7b7bf;
-  display: flex;
-  font-size: 13px;
-  justify-content: space-between;
-  padding: 6px 0;
-}
-
-.quick-links a:hover {
-  color: #fff;
 }
 
 .project-intro {
@@ -499,7 +479,7 @@ footer {
   }
 
   .site-header nav {
-    gap: 14px;
+    gap: 10px;
   }
 
   .site-header nav a:nth-child(2) {

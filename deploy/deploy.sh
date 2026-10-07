@@ -2,68 +2,85 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEPLOY_ENV="$ROOT_DIR/.env.deploy"
+cd "$ROOT_DIR"
 
-if [[ ! -f "$DEPLOY_ENV" ]]; then
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "Commit or set aside local changes before deploying."
+  exit 1
+fi
+
+node scripts/check.mjs
+
+if [[ ! -f .env.deploy ]]; then
   echo "Missing .env.deploy. Copy .env.deploy.example and fill in the SSH target."
   exit 1
 fi
 
-set -a
-source "$DEPLOY_ENV"
-set +a
+source .env.deploy
 
 SERVER="${NICRICHARD_SERVER:?NICRICHARD_SERVER is required}"
 REMOTE="${NICRICHARD_REMOTE:-/var/www/nicrichard.dev}"
-RELEASE_ID="$(date -u +%Y%m%d%H%M%S)"
-RELEASE="$REMOTE/releases/$RELEASE_ID"
-
-for file in index.html robots.txt sitemap.xml favicon.svg; do
-  if [[ ! -f "$ROOT_DIR/$file" ]]; then
-    echo "Missing required file: $ROOT_DIR/$file"
-    exit 1
-  fi
-done
-
-if [[ ! -d "$ROOT_DIR/assets" ]]; then
-  echo "Missing required directory: $ROOT_DIR/assets"
+if [[ ! "$SERVER" =~ ^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+$ || "$REMOTE" != /var/www/nicrichard.dev ]]; then
+  echo "Use user@host and /var/www/nicrichard.dev, matching the nginx configuration."
   exit 1
 fi
 
-if command -v node >/dev/null 2>&1; then
-  node --check "$ROOT_DIR/assets/js/main.js"
+REVISION="$(git rev-parse HEAD)"
+RELEASE_ID="$(date -u +%Y%m%d%H%M%S)-${REVISION:0:7}"
+RELEASE="$REMOTE/releases/$RELEASE_ID"
+
+echo "Preparing committed release ${REVISION:0:7} on $SERVER..."
+ssh "$SERVER" "test -L '$REMOTE/current' && nginx -t && mkdir '$RELEASE'"
+git archive "$REVISION" index.html assets favicon.svg robots.txt sitemap.xml |
+  ssh "$SERVER" "tar -xf - -C '$RELEASE'"
+
+ssh "$SERVER" bash -s -- "$REMOTE" "$RELEASE" <<'REMOTE_SCRIPT'
+set -euo pipefail
+remote="$1"
+release="$2"
+exec 9>"$remote/deploy.lock"
+flock -n 9
+release_root="$(realpath "$remote/releases")"
+previous="$(readlink -f "$remote/current")"
+release="$(realpath "$release")"
+test "$release_root" = "$remote/releases"
+test "$(dirname "$previous")" = "$release_root"
+test "$(dirname "$release")" = "$release_root"
+test -d "$previous"
+next="$remote/current.next"
+
+for file in index.html assets/css/styles.css assets/js/main.js favicon.svg robots.txt sitemap.xml; do
+  test -s "$release/$file"
+done
+nginx -t
+test ! -e "$next" && test ! -L "$next"
+ln -s "$release" "$next"
+mv -Tf "$next" "$remote/current"
+
+if ! systemctl reload nginx || ! curl --fail --silent --show-error --location \
+  --connect-timeout 5 --max-time 15 --resolve nicrichard.dev:443:127.0.0.1 \
+  -H 'Host: nicrichard.dev' http://127.0.0.1/ >/dev/null; then
+  ln -s "$previous" "$next"
+  mv -Tf "$next" "$remote/current"
+  systemctl reload nginx
+  echo "Deployment failed; restored the previous release." >&2
+  exit 1
 fi
 
-echo "Preparing portfolio release for $SERVER:$REMOTE..."
-ssh "$SERVER" "mkdir -p '$RELEASE' '$REMOTE/releases'"
+while IFS= read -r -d '' candidate; do
+  if [[ "$candidate" == "$release" || "$candidate" == "$previous" ]]; then
+    continue
+  fi
+  name="$(basename "$candidate")"
+  if [[ ! "$name" =~ ^[0-9]{8}([0-9]{6})?(-[0-9a-f]{7,40})?$ ]]; then
+    echo "Leaving unrecognised release directory: $candidate" >&2
+    continue
+  fi
+  test ! -L "$candidate"
+  test "$(realpath "$candidate")" = "$release_root/$name"
+  rm -rf -- "$candidate"
+  echo "Removed old release: $name"
+done < <(find "$release_root" -mindepth 1 -maxdepth 1 -type d -print0)
+REMOTE_SCRIPT
 
-tar -C "$ROOT_DIR" -czf - \
-  index.html assets favicon.svg robots.txt sitemap.xml \
-  | ssh "$SERVER" "tar -xzf - -C '$RELEASE'"
-
-scp "$ROOT_DIR/deploy/nginx.http.conf" "$SERVER:/tmp/nicrichard.http.conf"
-scp "$ROOT_DIR/deploy/nginx.conf" "$SERVER:/tmp/nicrichard.ssl.conf"
-
-ssh "$SERVER" "\
-  set -euo pipefail; \
-  ln -sfn '$RELEASE' '$REMOTE/current'; \
-  if [[ -f /etc/letsencrypt/live/nicrichard.dev/fullchain.pem && -f /etc/letsencrypt/live/nicrichard.dev/privkey.pem ]]; then \
-    install -m 0644 /tmp/nicrichard.ssl.conf /etc/nginx/sites-available/nicrichard.dev; \
-  else \
-    install -m 0644 /tmp/nicrichard.http.conf /etc/nginx/sites-available/nicrichard.dev; \
-  fi; \
-  rm -f /tmp/nicrichard.http.conf /tmp/nicrichard.ssl.conf; \
-  ln -sfn /etc/nginx/sites-available/nicrichard.dev /etc/nginx/sites-enabled/nicrichard.dev; \
-  nginx -t; \
-  systemctl reload nginx; \
-  find '$REMOTE/releases' -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' | sort -nr | tail -n +4 | cut -d' ' -f2- | xargs -r rm -rf; \
-  curl -fsS -H 'Host: nicrichard.dev' http://127.0.0.1/ >/dev/null"
-
-echo "Portfolio deployed successfully."
-
-if ! ssh "$SERVER" "test -f /etc/letsencrypt/live/nicrichard.dev/fullchain.pem"; then
-  echo
-  echo "HTTPS is not configured yet. After DNS points to this server, run:"
-  echo "ssh $SERVER \"certbot --nginx -d nicrichard.dev -d www.nicrichard.dev\""
-  echo "Then run this deploy script again."
-fi
+echo "Deployed $RELEASE_ID. Kept one previous release for rollback."

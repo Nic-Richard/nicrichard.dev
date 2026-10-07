@@ -1,60 +1,84 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Miscellary mobile screenshot sets</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; width: 1914px; height: 945px; overflow: hidden; }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 70px;
-      background:
-        radial-gradient(80% 110% at 0% 0%, rgba(201,162,74,.34) 0%, transparent 60%),
-        radial-gradient(60% 90% at 100% 100%, rgba(123,95,163,.28) 0%, transparent 65%),
-        linear-gradient(110deg, #5a4633 0%, #2a2119 72%);
-    }
-    figure {
-      margin: 0;
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 48px;
-      background: #1d1913;
-      box-shadow: 0 24px 50px rgba(0,0,0,.3);
-      flex: none;
-    }
-    img {
-      display: block;
-      width: 365.4px;
-      height: 812px;
-      border-radius: 36px;
-    }
-    .landscape { border-radius: 30px; }
-    .landscape img { width: 1080px; height: 486px; border-radius: 18px; }
-  </style>
-</head>
-<body>
-  <script>
-    const groups = [
-      ['01-browse', '02-set', '06-collection'],
-      ['08-pack', '05-reveal', '07-editor'],
-      ['04-inspector', '03-binder']
-    ];
-    const set = Number(new URLSearchParams(location.search).get('set'));
-    if (!Number.isInteger(set) || set < 1 || set > groups.length) throw new Error('Choose set 1, 2 or 3.');
-    for (const name of groups[set - 1]) {
-      const frame = document.createElement('figure');
-      if (name === '03-binder') frame.className = 'landscape';
-      const image = document.createElement('img');
-      image.src = `../assets/images/miscellary/mobile/october-2026/${name}.png`;
-      image.alt = name;
-      frame.append(image);
-      document.body.append(frame);
-    }
-    Promise.all([...document.images].map(image => image.decode()))
-      .then(() => document.documentElement.dataset.ready = 'true');
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Miscellary mobile screenshot sets</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1914px;
+        height: 945px;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 70px;
+        background:
+          radial-gradient(
+            80% 110% at 0% 0%,
+            rgba(201, 162, 74, 0.34) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            60% 90% at 100% 100%,
+            rgba(123, 95, 163, 0.28) 0%,
+            transparent 65%
+          ),
+          linear-gradient(110deg, #5a4633 0%, #2a2119 72%);
+      }
+      figure {
+        margin: 0;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 48px;
+        background: #1d1913;
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+        flex: none;
+      }
+      img {
+        display: block;
+        width: 365.4px;
+        height: 812px;
+        border-radius: 36px;
+      }
+      .landscape {
+        border-radius: 30px;
+      }
+      .landscape img {
+        width: 1080px;
+        height: 486px;
+        border-radius: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const groups = [
+        ["01-browse", "02-set", "06-collection"],
+        ["08-pack", "05-reveal", "07-editor"],
+        ["04-inspector", "03-binder"],
+      ];
+      const set = Number(new URLSearchParams(location.search).get("set"));
+      if (!Number.isInteger(set) || set < 1 || set > groups.length)
+        throw new Error("Choose set 1, 2 or 3.");
+      for (const name of groups[set - 1]) {
+        const frame = document.createElement("figure");
+        if (name === "03-binder") frame.className = "landscape";
+        const image = document.createElement("img");
+        image.src = `../assets/images/miscellary/mobile/october-2026/${name}.png`;
+        image.alt = name;
+        frame.append(image);
+        document.body.append(frame);
+      }
+      Promise.all([...document.images].map((image) => image.decode())).then(
+        () => (document.documentElement.dataset.ready = "true"),
+      );
+    </script>
+  </body>
 </html>
