@@ -19,25 +19,14 @@
         align-items: center;
         justify-content: center;
         gap: 70px;
-        background:
-          radial-gradient(
-            80% 110% at 0% 0%,
-            rgba(201, 162, 74, 0.34) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            60% 90% at 100% 100%,
-            rgba(123, 95, 163, 0.28) 0%,
-            transparent 65%
-          ),
-          linear-gradient(110deg, #5a4633 0%, #2a2119 72%);
+        background: radial-gradient(circle at 78% 46%, #d8d2c3 0%, #c9c3b2 34%, #b8ad97 72%, #a9997c 100%);
       }
       figure {
         margin: 0;
         padding: 10px;
         border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 48px;
-        background: #1d1913;
+        background: #333b42;
         box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
         flex: none;
       }
@@ -60,9 +49,9 @@
   <body>
     <script>
       const groups = [
-        ["01-browse", "02-set", "06-collection"],
-        ["08-pack", "05-reveal", "07-editor"],
-        ["04-inspector", "03-binder"],
+        ["01-browse", "09-packs", "06-collection"],
+        ["08-pack", "05-reveal", "10-pack-complete"],
+        ["02-set", "03-binder"],
       ];
       const set = Number(new URLSearchParams(location.search).get("set"));
       if (!Number.isInteger(set) || set < 1 || set > groups.length)

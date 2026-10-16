@@ -1973,7 +1973,44 @@ body.lightbox-open {
 /* Shared desktop/mobile project galleries */
 
 .portfolio-layout .misc-theme {
-  background: radial-gradient(80% 110% at 0% 0%, rgba(201,162,74,.34) 0%, transparent 60%), radial-gradient(60% 90% at 100% 100%, rgba(123,95,163,.28) 0%, transparent 65%), linear-gradient(110deg, #5a4633 0%, #2a2119 72%);
+  background: radial-gradient(circle at 78% 46%, #d8d2c3 0%, #c9c3b2 34%, #b8ad97 72%, #a9997c 100%);
+}
+
+.misc-theme .project-identity {
+  color: #333b42;
+}
+
+.misc-theme .project-identity > p,
+.misc-theme .live-status {
+  color: #4f5559;
+}
+
+.misc-theme .live-status i {
+  background: #2f8a55;
+}
+
+.misc-theme .portlore-tab {
+  color: #4f5559;
+}
+
+.misc-theme .portlore-tab:hover {
+  background: rgba(51,59,66,.08);
+  color: #333b42;
+}
+
+.misc-theme .portlore-tab.active,
+.misc-theme .portlore-tab[aria-selected="true"] {
+  background: #333b42;
+  border-color: #333b42;
+  color: #f3f5f2;
+}
+
+.misc-theme .gallery-dots button {
+  background: rgba(51,59,66,.25);
+}
+
+.misc-theme .gallery-dots button.active {
+  background: #333b42;
 }
 
 .portfolio-layout #miscellary .project-visual {
