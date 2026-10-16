@@ -205,7 +205,7 @@ a:focus-visible,button:focus-visible {
 }
 
 .trace-theme {
-  background: radial-gradient(80% 110% at 0% 0%,rgba(123,123,230,.38) 0%,transparent 60%),linear-gradient(110deg,#3a3a9e 0%,#121218 72%);
+  background: radial-gradient(80% 110% at 0% 0%,rgba(76,76,219,.42) 0%,transparent 60%),radial-gradient(70% 90% at 100% 100%,rgba(240,138,36,.16) 0%,transparent 60%),radial-gradient(60% 80% at 70% 20%,rgba(176,63,176,.2) 0%,transparent 65%),linear-gradient(115deg,#2c2a6e 0%,#151824 70%);
 }
 
 .wiki-theme {
