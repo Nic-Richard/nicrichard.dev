@@ -1011,21 +1011,21 @@ footer {
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
 }
 
-.portfolio-layout #tracetray .project-details,
+.portfolio-layout #wikiracr .project-details,
 .portfolio-layout #portlore .project-details {
   order: 1;
 }
 
-.portfolio-layout #tracetray .project-visual,
+.portfolio-layout #wikiracr .project-visual,
 .portfolio-layout #portlore .project-visual {
   order: 2;
 }
 
-.portfolio-layout #wikiracr .project-visual {
+.portfolio-layout #tracetray .project-visual {
   order: 1;
 }
 
-.portfolio-layout #wikiracr .project-details {
+.portfolio-layout #tracetray .project-details {
   order: 2;
 }
 
@@ -1254,7 +1254,7 @@ footer {
     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   }
 
-  .portfolio-layout #wikiracr {
+  .portfolio-layout #tracetray {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   }
 }

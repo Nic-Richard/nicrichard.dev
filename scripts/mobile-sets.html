@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Miscellary mobile screenshot sets</title>
+    <title>Mobile screenshot sets</title>
     <style>
       * {
         box-sizing: border-box;
@@ -20,6 +20,22 @@
         justify-content: center;
         gap: 70px;
         background: radial-gradient(circle at 78% 46%, #d8d2c3 0%, #c9c3b2 34%, #b8ad97 72%, #a9997c 100%);
+      }
+      body.tracetray {
+        background: radial-gradient(60% 90% at 12% 8%, rgba(76, 76, 219, 0.55) 0%, transparent 62%),
+          radial-gradient(55% 80% at 92% 96%, rgba(240, 138, 36, 0.24) 0%, transparent 62%),
+          radial-gradient(50% 70% at 70% 18%, rgba(176, 63, 176, 0.3) 0%, transparent 66%),
+          linear-gradient(115deg, #2c2a6e 0%, #151824 72%);
+      }
+      body.wikiracr {
+        background: radial-gradient(60% 90% at 12% 8%, rgba(88, 166, 255, 0.38) 0%, transparent 62%),
+          linear-gradient(110deg, #1f3a5f 0%, #0d1117 74%);
+      }
+      body.tracetray figure,
+      body.wikiracr figure {
+        background: #2b313b;
+        border-color: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
       }
       figure {
         margin: 0;
@@ -48,19 +64,42 @@
   </head>
   <body>
     <script>
-      const groups = [
-        ["01-browse", "09-packs", "06-collection"],
-        ["08-pack", "05-reveal", "10-pack-complete"],
-        ["02-set", "03-binder"],
-      ];
-      const set = Number(new URLSearchParams(location.search).get("set"));
-      if (!Number.isInteger(set) || set < 1 || set > groups.length)
-        throw new Error("Choose set 1, 2 or 3.");
-      for (const name of groups[set - 1]) {
+      const apps = {
+        miscellary: {
+          folder: "miscellary/mobile/october-2026/",
+          groups: [
+            ["01-browse", "09-packs", "06-collection"],
+            ["08-pack", "05-reveal", "10-pack-complete"],
+            ["02-set", "03-binder"],
+          ],
+        },
+        tracetray: {
+          folder: "tracetray/mobile-",
+          groups: [
+            ["01-pages", "02-trends", "03-journeys"],
+            ["04-ask", "05-overview", "06-groups"],
+          ],
+        },
+        wikiracr: {
+          folder: "wikiracr/mobile-",
+          groups: [
+            ["01-home", "02-solo", "03-race"],
+            ["04-results", "05-daily", "06-multiplayer"],
+          ],
+        },
+      };
+      const params = new URLSearchParams(location.search);
+      const app = apps[params.get("app") || "miscellary"];
+      const set = Number(params.get("set"));
+      if (!app) throw new Error("Unknown app.");
+      if (!Number.isInteger(set) || set < 1 || set > app.groups.length)
+        throw new Error(`Choose a set from 1 to ${app.groups.length}.`);
+      document.body.className = params.get("app") || "miscellary";
+      for (const name of app.groups[set - 1]) {
         const frame = document.createElement("figure");
         if (name === "03-binder") frame.className = "landscape";
         const image = document.createElement("img");
-        image.src = `../assets/images/miscellary/mobile/october-2026/${name}.png`;
+        image.src = `../assets/images/${app.folder}${name}.png`;
         image.alt = name;
         frame.append(image);
         document.body.append(frame);

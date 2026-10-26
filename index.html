@@ -527,7 +527,7 @@
           ><button
             aria-label="Next project"
             class="project-nav-button"
-            data-project-jump="seed-placement"
+            data-project-jump="tracetray"
             type="button"
           >
             <svg
@@ -768,7 +768,8 @@
               and narrows them into a practical set of recommendations that
               includes both major sights and worthwhile local finds. Passengers
               can turn those recommendations into a realistic plan for the time
-              they have ashore.
+              they have ashore, on the web or in the Android app, which can also
+              remind them when it's time to head back to the ship.
             </p>
           </div>
           <aside class="project-meta">
@@ -782,8 +783,8 @@
             <div>
               <span>Stack</span>
               <p>
-                JavaScript, Node.js, Express, OpenStreetMap, OSRM, Wikipedia,
-                Google Places, Gemini
+                JavaScript, Node.js, Express, Capacitor, OpenStreetMap, OSRM,
+                Wikipedia, Google Places, Gemini, Anthropic API
               </p>
             </div>
             <div class="project-links">
@@ -800,11 +801,8 @@
           </aside>
         </div>
       </article>
-      <article class="project" id="seed-placement">
-        <div
-          aria-label="Seed Placement Randomizer project navigation"
-          class="project-nav"
-        >
+      <article class="project device-project" id="tracetray">
+        <div aria-label="Tracetray project navigation" class="project-nav">
           <button
             aria-label="Previous project"
             class="project-nav-button"
@@ -830,7 +828,636 @@
           ><button
             aria-label="Next project"
             class="project-nav-button"
+            data-project-jump="wikiracr"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual trace-theme">
+          <div class="project-identity">
+            <h2>TraceTray</h2>
+            <p>Behavioural analytics</p>
+            <span class="live-status"><i></i> Live</span>
+          </div>
+          <div class="portlore-gallery-wrap device-gallery">
+            <div
+              aria-label="TraceTray screenshots"
+              class="portlore-tabs"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="portlore-tab active"
+                data-device-tab="desktop"
+                role="tab"
+                type="button"
+              >
+                Desktop
+              </button>
+              <button
+                aria-selected="false"
+                class="portlore-tab"
+                data-device-tab="mobile"
+                role="tab"
+                type="button"
+              >
+                Mobile
+              </button>
+            </div>
+            <div class="portlore-panel active" data-device-panel="desktop">
+              <div class="gallery-shell portlore-desktop-shell">
+                <button
+                  aria-label="Previous TraceTray desktop screenshot"
+                  class="gallery-arrow previous"
+                  data-direction="-1"
+                  data-gallery-step="tracetray-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery" id="gallery-tracetray-desktop">
+                  <figure>
+                    <img
+                      alt="TraceTray product pages overview: goal rate, visits and visitor groups for the fictional Morrowpine Outfitters demo"
+                      src="assets/images/tracetray/desktop-01-overview.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray weekly add-to-cart rate and trends for the demo product pages"
+                      src="assets/images/tracetray/desktop-02-trends.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray visitor groups for the demo product pages, each measured against the page average"
+                      src="assets/images/tracetray/desktop-03-visitors.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray homepage overview with visits by day, visitor groups and a suggestion backed by the numbers"
+                      src="assets/images/tracetray/desktop-04-insights.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray attention shaded over a picture of the demo homepage"
+                      src="assets/images/tracetray/desktop-05-attention.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray journeys: where visitors arrive and leave, and the most common moves"
+                      src="assets/images/tracetray/desktop-06-journey.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray recent visits to the demo store"
+                      src="assets/images/tracetray/desktop-07-sessions.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="TraceTray Ask answering why some visitors do not add to cart"
+                      src="assets/images/tracetray/desktop-08-ask.png"
+                    />
+                  </figure>
+                </div>
+                <button
+                  aria-label="Next TraceTray desktop screenshot"
+                  class="gallery-arrow next"
+                  data-direction="1"
+                  data-gallery-step="tracetray-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="gallery-dots"
+                  data-gallery-dots="tracetray-desktop"
+                ></div>
+              </div>
+            </div>
+            <div class="portlore-panel" data-device-panel="mobile" hidden="">
+              <div
+                class="mobile-carousel-shell"
+                data-mobile-gallery="tracetray-mobile"
+              >
+                <button
+                  aria-label="Previous TraceTray mobile screenshot"
+                  class="gallery-arrow previous"
+                  data-mobile-step="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="mobile-carousel-viewport">
+                  <div class="mobile-carousel-track"></div>
+                </div>
+                <button
+                  aria-label="Next TraceTray mobile screenshot"
+                  class="gallery-arrow next"
+                  data-mobile-step="1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery-dots"></div>
+                <div class="mobile-carousel-source" hidden>
+                  <img
+                    alt="TraceTray mobile pages list for the Morrowpine Outfitters demo store"
+                    src="assets/images/tracetray/mobile-01-pages.png"
+                  />
+                  <img
+                    alt="TraceTray mobile visits by day for the home page"
+                    src="assets/images/tracetray/mobile-02-trends.png"
+                  />
+                  <img
+                    alt="TraceTray mobile journeys showing where visitors arrive"
+                    src="assets/images/tracetray/mobile-03-journeys.png"
+                  />
+                  <img
+                    alt="TraceTray mobile Ask screen with suggested questions"
+                    src="assets/images/tracetray/mobile-04-ask.png"
+                  />
+                  <img
+                    alt="TraceTray mobile overview of the home page"
+                    src="assets/images/tracetray/mobile-05-overview.png"
+                  />
+                  <img
+                    alt="TraceTray mobile visitor groups for the home page"
+                    src="assets/images/tracetray/mobile-06-groups.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              Behavioural analytics from lightweight interaction data
+            </p>
+            <p>
+              TraceTray is built around the idea that you can derive a
+              surprising amount of useful behavioural information from very
+              little raw data.
+            </p>
+            <p>
+              A lightweight tracker collects simple interaction signals such as
+              cursor movement, clicks, scrolling, and pauses. Machine learning
+              and analysis pipelines turn those signals into findings about
+              attention, hesitation, movement, and engagement.
+            </p>
+            <p>
+              The dashboard brings those results together with visual summaries
+              and AI-generated explanations to make the analysis easier to
+              interpret. Site owners set things up on the web, and an Android
+              app lets them check in on their pages, journeys and visitor groups
+              from their phone.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                Using ML to extract useful UX signals from a lightweight stream
+                of interaction data.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>
+                React, React Native, Expo, Node.js, Express, MongoDB, Python,
+                scikit-learn, pandas, Clerk, Stripe, Anthropic API
+              </p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a href="https://tracetray.com" rel="noopener" target="_blank"
+                >Live site ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/TraceTray"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <article class="project device-project" id="wikiracr">
+        <div aria-label="Wikiracr project navigation" class="project-nav">
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
             data-project-jump="tracetray"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>4/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            data-project-jump="seed-placement"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 1L6 6L11 1"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="project-visual wiki-theme">
+          <div class="project-identity">
+            <h2>WikiRacr</h2>
+            <p>Graph search and multiplayer game</p>
+            <span class="live-status"><i></i> Live</span>
+          </div>
+          <div class="portlore-gallery-wrap device-gallery">
+            <div
+              aria-label="WikiRacr screenshots"
+              class="portlore-tabs"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="portlore-tab active"
+                data-device-tab="desktop"
+                role="tab"
+                type="button"
+              >
+                Desktop
+              </button>
+              <button
+                aria-selected="false"
+                class="portlore-tab"
+                data-device-tab="mobile"
+                role="tab"
+                type="button"
+              >
+                Mobile
+              </button>
+            </div>
+            <div class="portlore-panel active" data-device-panel="desktop">
+              <div class="gallery-shell portlore-desktop-shell">
+                <button
+                  aria-label="Previous WikiRacr desktop screenshot"
+                  class="gallery-arrow previous"
+                  data-direction="-1"
+                  data-gallery-step="wikiracr-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery" id="gallery-wikiracr-desktop">
+                  <figure>
+                    <img
+                      alt="WikiRacr home screen"
+                      src="assets/images/wikiracr/desktop-01-home.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="WikiRacr game mode selection"
+                      src="assets/images/wikiracr/desktop-02-modes.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="WikiRacr live round at the starting article"
+                      src="assets/images/wikiracr/desktop-03-round-start.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="WikiRacr round progressing through Wikipedia"
+                      src="assets/images/wikiracr/desktop-04-round-progress.png"
+                    />
+                  </figure>
+                  <figure>
+                    <img
+                      alt="WikiRacr completed round and optimal path comparison"
+                      src="assets/images/wikiracr/desktop-05-results.png"
+                    />
+                  </figure>
+                </div>
+                <button
+                  aria-label="Next WikiRacr desktop screenshot"
+                  class="gallery-arrow next"
+                  data-direction="1"
+                  data-gallery-step="wikiracr-desktop"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="gallery-dots"
+                  data-gallery-dots="wikiracr-desktop"
+                ></div>
+              </div>
+            </div>
+            <div class="portlore-panel" data-device-panel="mobile" hidden="">
+              <div
+                class="mobile-carousel-shell"
+                data-mobile-gallery="wikiracr-mobile"
+              >
+                <button
+                  aria-label="Previous WikiRacr mobile screenshot"
+                  class="gallery-arrow previous"
+                  data-mobile-step="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2L2 8L8 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="mobile-carousel-viewport">
+                  <div class="mobile-carousel-track"></div>
+                </div>
+                <button
+                  aria-label="Next WikiRacr mobile screenshot"
+                  class="gallery-arrow next"
+                  data-mobile-step="1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="16"
+                    viewbox="0 0 10 16"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 2L8 8L2 14"
+                      stroke="white"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="gallery-dots"></div>
+                <div class="mobile-carousel-source" hidden>
+                  <img
+                    alt="WikiRacr mobile main menu"
+                    src="assets/images/wikiracr/mobile-01-home.png"
+                  />
+                  <img
+                    alt="WikiRacr mobile solo difficulty picker"
+                    src="assets/images/wikiracr/mobile-02-solo.png"
+                  />
+                  <img
+                    alt="WikiRacr mobile race on the Galileo Galilei article"
+                    src="assets/images/wikiracr/mobile-03-race.png"
+                  />
+                  <img
+                    alt="WikiRacr mobile results comparing the path with the shortest route"
+                    src="assets/images/wikiracr/mobile-04-results.png"
+                  />
+                  <img
+                    alt="WikiRacr mobile daily challenge"
+                    src="assets/images/wikiracr/mobile-05-daily.png"
+                  />
+                  <img
+                    alt="WikiRacr mobile multiplayer menu"
+                    src="assets/images/wikiracr/mobile-06-multiplayer.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <div class="project-copy">
+            <p class="project-focus">
+              A competitive Wikipedia navigation game backed by fast graph
+              search
+            </p>
+            <p>
+              WikiRacr started as a research project on graph search algorithms
+              for finding shortest paths between Wikipedia articles.
+            </p>
+            <p>
+              With forward and reverse link graphs, bidirectional breadth-first
+              search cut route-finding time by orders of magnitude compared with
+              the other approaches I tested. That made it practical to curate
+              large numbers of start and goal pairs and put my own spin on the
+              classic wikiracing game, with routes that are intentionally chosen
+              instead of completely random.
+            </p>
+            <p>
+              The research grew into a full game with Solo and Daily Challenge,
+              plus multiplayer modes including Classic, Ranked, Speedrun,
+              Knockout, Clicks, Score, and Higher or Lower. It plays in the
+              browser and as an Android app built from the same React client.
+            </p>
+          </div>
+          <aside class="project-meta">
+            <div>
+              <span>Built around</span>
+              <p>
+                Fast shortest-path search over Wikipedia’s link graph and
+                curated article pairs at scale.
+              </p>
+            </div>
+            <div>
+              <span>Stack</span>
+              <p>
+                React, Vite, Capacitor, Node.js, Socket.IO, SQLite, Clerk, Stripe
+              </p>
+            </div>
+            <div class="project-links">
+              <span>Links</span
+              ><a href="https://wikiracr.com" rel="noopener" target="_blank"
+                >Play WikiRacr ↗</a
+              ><a
+                href="https://github.com/Nic-Richard/wikiracr"
+                rel="noopener"
+                target="_blank"
+                >GitHub ↗</a
+              >
+            </div>
+          </aside>
+        </div>
+      </article>
+      <article class="project" id="seed-placement">
+        <div
+          aria-label="Seed Placement Randomizer project navigation"
+          class="project-nav"
+        >
+          <button
+            aria-label="Previous project"
+            class="project-nav-button"
+            data-project-jump="wikiracr"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="8"
+              viewbox="0 0 12 8"
+              width="12"
+            >
+              <path
+                d="M1 7L6 2L11 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.4"
+              ></path>
+            </svg></button
+          ><span>5/5</span
+          ><button
+            aria-label="Next project"
+            class="project-nav-button"
+            disabled=""
             type="button"
           >
             <svg
@@ -1024,396 +1651,6 @@
                 >Download ↗</a
               ><a
                 href="https://github.com/Nic-Richard/seed-placement-randomizer"
-                rel="noopener"
-                target="_blank"
-                >GitHub ↗</a
-              >
-            </div>
-          </aside>
-        </div>
-      </article>
-      <article class="project" id="tracetray">
-        <div aria-label="Tracetray project navigation" class="project-nav">
-          <button
-            aria-label="Previous project"
-            class="project-nav-button"
-            data-project-jump="seed-placement"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              height="8"
-              viewbox="0 0 12 8"
-              width="12"
-            >
-              <path
-                d="M1 7L6 2L11 7"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.4"
-              ></path>
-            </svg></button
-          ><span>4/5</span
-          ><button
-            aria-label="Next project"
-            class="project-nav-button"
-            data-project-jump="wikiracr"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              height="8"
-              viewbox="0 0 12 8"
-              width="12"
-            >
-              <path
-                d="M1 1L6 6L11 1"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.4"
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <div class="project-visual trace-theme">
-          <div class="project-identity">
-            <h2>TraceTray</h2>
-            <p>Behavioural analytics</p>
-            <span class="live-status"><i></i> Live</span>
-          </div>
-          <div class="gallery-shell">
-            <button
-              aria-label="Previous TraceTray screenshot"
-              class="gallery-arrow previous"
-              data-direction="-1"
-              data-gallery-step="tracetray"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16"
-                viewbox="0 0 10 16"
-                width="10"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 2L2 8L8 14"
-                  stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                ></path>
-              </svg>
-            </button>
-            <div class="gallery" id="gallery-tracetray">
-              <figure>
-                <img
-                  alt="TraceTray product pages overview: goal rate, visits and visitor groups for the fictional Morrowpine Outfitters demo"
-                  src="assets/images/tracetray/desktop-01-overview.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray weekly add-to-cart rate and trends for the demo product pages"
-                  src="assets/images/tracetray/desktop-02-trends.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray visitor groups for the demo product pages, each measured against the page average"
-                  src="assets/images/tracetray/desktop-03-visitors.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray homepage overview with visits by day, visitor groups and a suggestion backed by the numbers"
-                  src="assets/images/tracetray/desktop-04-insights.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray attention shaded over a picture of the demo homepage"
-                  src="assets/images/tracetray/desktop-05-attention.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray journeys: where visitors arrive and leave, and the most common moves"
-                  src="assets/images/tracetray/desktop-06-journey.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray recent visits to the demo store"
-                  src="assets/images/tracetray/desktop-07-sessions.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="TraceTray Ask answering why some visitors do not add to cart"
-                  src="assets/images/tracetray/desktop-08-ask.png"
-                />
-              </figure>
-            </div>
-            <button
-              aria-label="Next TraceTray screenshot"
-              class="gallery-arrow next"
-              data-direction="1"
-              data-gallery-step="tracetray"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16"
-                viewbox="0 0 10 16"
-                width="10"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2 2L8 8L2 14"
-                  stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                ></path>
-              </svg>
-            </button>
-            <div class="gallery-dots" data-gallery-dots="tracetray"></div>
-          </div>
-        </div>
-        <div class="project-details">
-          <div class="project-copy">
-            <p class="project-focus">
-              Behavioural analytics from lightweight interaction data
-            </p>
-            <p>
-              TraceTray is built around the idea that you can derive a
-              surprising amount of useful behavioural information from very
-              little raw data.
-            </p>
-            <p>
-              A lightweight tracker collects simple interaction signals such as
-              cursor movement, clicks, scrolling, and pauses. Machine learning
-              and analysis pipelines turn those signals into findings about
-              attention, hesitation, movement, and engagement.
-            </p>
-            <p>
-              The dashboard brings those results together with visual summaries
-              and AI-generated explanations to make the analysis easier to
-              interpret.
-            </p>
-          </div>
-          <aside class="project-meta">
-            <div>
-              <span>Built around</span>
-              <p>
-                Using ML to extract useful UX signals from a lightweight stream
-                of interaction data.
-              </p>
-            </div>
-            <div>
-              <span>Stack</span>
-              <p>Node.js, Express, MongoDB, Python, scikit-learn, pandas</p>
-            </div>
-            <div class="project-links">
-              <span>Links</span
-              ><a href="https://tracetray.com" rel="noopener" target="_blank"
-                >Live site ↗</a
-              ><a
-                href="https://github.com/Nic-Richard/TraceTray"
-                rel="noopener"
-                target="_blank"
-                >GitHub ↗</a
-              >
-            </div>
-          </aside>
-        </div>
-      </article>
-      <article class="project" id="wikiracr">
-        <div aria-label="Wikiracr project navigation" class="project-nav">
-          <button
-            aria-label="Previous project"
-            class="project-nav-button"
-            data-project-jump="tracetray"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              height="8"
-              viewbox="0 0 12 8"
-              width="12"
-            >
-              <path
-                d="M1 7L6 2L11 7"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.4"
-              ></path>
-            </svg></button
-          ><span>5/5</span
-          ><button
-            aria-label="Next project"
-            class="project-nav-button"
-            disabled=""
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              fill="none"
-              height="8"
-              viewbox="0 0 12 8"
-              width="12"
-            >
-              <path
-                d="M1 1L6 6L11 1"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.4"
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <div class="project-visual wiki-theme">
-          <div class="project-identity">
-            <h2>WikiRacr</h2>
-            <p>Graph search and multiplayer game</p>
-            <span class="live-status"><i></i> Live</span>
-          </div>
-          <div class="gallery-shell">
-            <button
-              aria-label="Previous WikiRacr screenshot"
-              class="gallery-arrow previous"
-              data-direction="-1"
-              data-gallery-step="wikiracr"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16"
-                viewbox="0 0 10 16"
-                width="10"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 2L2 8L8 14"
-                  stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                ></path>
-              </svg>
-            </button>
-            <div class="gallery" id="gallery-wikiracr">
-              <figure>
-                <img
-                  alt="WikiRacr home screen"
-                  src="assets/images/wikiracr/desktop-01-home.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="WikiRacr game mode selection"
-                  src="assets/images/wikiracr/desktop-02-modes.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="WikiRacr live round at the starting article"
-                  src="assets/images/wikiracr/desktop-03-round-start.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="WikiRacr round progressing through Wikipedia"
-                  src="assets/images/wikiracr/desktop-04-round-progress.png"
-                />
-              </figure>
-              <figure>
-                <img
-                  alt="WikiRacr completed round and optimal path comparison"
-                  src="assets/images/wikiracr/desktop-05-results.png"
-                />
-              </figure>
-            </div>
-            <button
-              aria-label="Next WikiRacr screenshot"
-              class="gallery-arrow next"
-              data-direction="1"
-              data-gallery-step="wikiracr"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                fill="none"
-                height="16"
-                viewbox="0 0 10 16"
-                width="10"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2 2L8 8L2 14"
-                  stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                ></path>
-              </svg>
-            </button>
-            <div class="gallery-dots" data-gallery-dots="wikiracr"></div>
-          </div>
-        </div>
-        <div class="project-details">
-          <div class="project-copy">
-            <p class="project-focus">
-              A competitive Wikipedia navigation game backed by fast graph
-              search
-            </p>
-            <p>
-              WikiRacr started as a research project on graph search algorithms
-              for finding shortest paths between Wikipedia articles.
-            </p>
-            <p>
-              With forward and reverse link graphs, bidirectional breadth-first
-              search cut route-finding time by orders of magnitude compared with
-              the other approaches I tested. That made it practical to curate
-              large numbers of start and goal pairs and put my own spin on the
-              classic wikiracing game, with routes that are intentionally chosen
-              instead of completely random.
-            </p>
-            <p>
-              The research grew into a full game with Solo and Daily Challenge,
-              plus multiplayer modes including Classic, Ranked, Speedrun,
-              Knockout, Clicks, Score, and Higher or Lower.
-            </p>
-          </div>
-          <aside class="project-meta">
-            <div>
-              <span>Built around</span>
-              <p>
-                Fast shortest-path search over Wikipedia’s link graph and
-                curated article pairs at scale.
-              </p>
-            </div>
-            <div>
-              <span>Stack</span>
-              <p>React, Vite, Node.js, Socket.IO, SQLite, Clerk, Stripe</p>
-            </div>
-            <div class="project-links">
-              <span>Links</span
-              ><a href="https://wikiracr.com" rel="noopener" target="_blank"
-                >Play WikiRacr ↗</a
-              ><a
-                href="https://github.com/Nic-Richard/wikiracr"
                 rel="noopener"
                 target="_blank"
                 >GitHub ↗</a

@@ -16,14 +16,23 @@ const candidates = [
 const chrome = candidates.find(candidate => candidate && existsSync(candidate));
 if (!chrome) throw new Error('Chrome not found. Set CHROME_PATH to the browser executable.');
 
-const output = join(root, 'assets/images/miscellary/landscape/october-2026');
+// node scripts/export-mobile-sets.mjs [miscellary|tracetray|wikiracr]
+const app = process.argv[2] || 'miscellary';
+const apps = {
+  miscellary: { sets: 3, output: 'assets/images/miscellary/landscape/october-2026' },
+  tracetray: { sets: 2, output: 'assets/images/tracetray' },
+  wikiracr: { sets: 2, output: 'assets/images/wikiracr' },
+};
+if (!apps[app]) throw new Error(`Unknown app: ${app}`);
+const output = join(root, apps[app].output);
 mkdirSync(output, { recursive: true });
 const profile = mkdtempSync(join(tmpdir(), 'portfolio-mobile-export-'));
 try {
-  for (let set = 1; set <= 3; set++) {
+  for (let set = 1; set <= apps[app].sets; set++) {
     const page = pathToFileURL(join(root, 'scripts/mobile-sets.html'));
+    page.searchParams.set('app', app);
     page.searchParams.set('set', String(set));
-    const file = join(output, `miscellary-phones-${set}.png`);
+    const file = join(output, `${app}-phones-${set}.png`);
     execFileSync(chrome, [
       '--headless', '--disable-gpu', '--hide-scrollbars', '--no-first-run',
       '--no-default-browser-check', '--disable-background-networking',
